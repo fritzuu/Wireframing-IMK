@@ -76,7 +76,7 @@ export default function App() {
         <div className="top-header-right">
           <div className="team-pill-badge">
             <Users size={15} />
-            <span>Kelompok 3: Zendinan • Mufti • Revan</span>
+            <span>Kelompok 3: Zendinan • Faris • Revan</span>
           </div>
         </div>
       </header>
