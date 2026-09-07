@@ -84,7 +84,7 @@ export default function SlideDokumenPaper() {
         <div className="full-transcript-sheet">
           <div className="sheet-header">
             <h3 className="sheet-title">Transkrip Naskah Laporan Asli (PDF 7 Halaman)</h3>
-            <span className="sheet-sub">S1 Informatika - Fakultas MIPA Universitas Sebelas Maret</span>
+            <span className="sheet-sub">Program Studi S1 Informatika - Universitas Sebelas Maret</span>
           </div>
 
           <div className="sheet-body">

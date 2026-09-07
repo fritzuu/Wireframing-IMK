@@ -17,7 +17,7 @@ export default function ChapterDokumenPDF() {
       {/* Document Meta Header */}
       <div className="pdf-doc-paper">
         <div className="pdf-doc-header">
-          <div className="pdf-uni-tag">UNIVERSITAS SEBELAS MARET • TEKNIK INFORMATIKA</div>
+          <div className="pdf-uni-tag">UNIVERSITAS SEBELAS MARET • INFORMATIKA</div>
           <h1 className="pdf-main-title">Analisis & Redesain Interaksi: PLN Mobile</h1>
           <p className="pdf-case-sub">Studi Kasus: Pembelian Token Listrik Prabayar (Menu + Form Fill)</p>
           
