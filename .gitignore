@@ -1,0 +1,19 @@
+# User ignored files
+GEMINI.md
+.agents/
+.DS_Store
+
+# Dependencies & Build artifacts
+node_modules/
+dist/
+dist-ssr/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor & System
+.idea/
+.vscode/
+*.sw?
