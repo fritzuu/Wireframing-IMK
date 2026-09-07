@@ -90,7 +90,7 @@ export default function App() {
               onClick={() => setActivePage('analisis')}
             >
               <Layers size={17} />
-              <span>Ringkasan Analisis (Executive Summary)</span>
+              <span>Ringkasan Analisis <span className="tab-sub-text">(Executive Summary)</span></span>
             </button>
 
             <button
@@ -98,7 +98,7 @@ export default function App() {
               onClick={() => setActivePage('kasus')}
             >
               <Smartphone size={17} />
-              <span>Rancang Ulang (4 Kasus Mockup)</span>
+              <span>Rancang Ulang <span className="tab-sub-text">(4 Kasus Mockup)</span></span>
             </button>
           </div>
 

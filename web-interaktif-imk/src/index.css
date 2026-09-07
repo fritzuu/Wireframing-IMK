@@ -47,8 +47,8 @@
 }
 
 html, body, #root {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
   font-family: var(--font-sans);
   background-color: var(--canvas-bg);
@@ -59,12 +59,13 @@ html, body, #root {
 }
 
 /* ==========================================================================
-   Master Viewport (100vh)
+   Master Viewport (100dvh)
    ========================================================================== */
 
 .imk-master-viewport {
   height: 100vh;
-  width: 100vw;
+  height: 100dvh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -342,6 +343,7 @@ html, body, #root {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 24px 32px 48px 32px;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Common Components */
@@ -3324,15 +3326,582 @@ html, body, #root {
   cursor: pointer;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .ppt-slide-canvas {
+/* ==========================================================================
+   Comprehensive Mobile & Tablet Responsive Engine
+   ========================================================================== */
+
+/* 1. Medium Tablets & Small Laptops (max-width: 1080px) */
+@media (max-width: 1080px) {
+  .free-showcase-canvas {
     grid-template-columns: 1fr;
-    overflow-y: auto;
+    gap: 36px;
   }
-  
-  html, body, #root, .ppt-viewport {
+
+  .free-editorial-column {
+    max-width: 720px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .free-mockups-stage {
+    gap: 28px;
+  }
+
+  .free-split-layout {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .free-dgti-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+/* 2. Tablets & Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Global Portal Header */
+  .imk-top-header {
     height: auto;
-    overflow: auto;
+    min-height: 52px;
+    padding: 10px 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .top-header-left {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .portal-brand-block {
+    gap: 8px;
+  }
+
+  .portal-brand-block svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .brand-meta {
+    font-size: 0.58rem;
+    letter-spacing: 0.04em;
+  }
+
+  .brand-title {
+    font-size: 0.85rem;
+  }
+
+  .header-divider-line {
+    display: none;
+  }
+
+  .assignment-selector-container {
+    position: static;
+  }
+
+  .assignment-selector-trigger {
+    padding: 4px 8px;
+    gap: 6px;
+  }
+
+  .asg-pill-number {
+    font-size: 0.65rem;
+    padding: 2px 5px;
+  }
+
+  .asg-pill-name {
+    font-size: 0.8rem;
+  }
+
+  .assignment-dropdown-popover {
+    position: fixed;
+    top: 56px;
+    left: 10px;
+    right: 10px;
+    width: auto;
+    max-width: calc(100vw - 20px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+    z-index: 999;
+  }
+
+  .top-header-right {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .team-pill-badge {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+    gap: 4px;
+    width: auto;
+  }
+
+  /* Segmented Primary Navigation Tabs */
+  .tugas1-nav-bar {
+    height: auto;
+    padding: 8px 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .tugas1-nav-tabs {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+  }
+
+  .tugas1-tab-btn {
+    flex: 1;
+    justify-content: center;
+    font-size: 0.82rem;
+    padding: 8px 6px;
+    text-align: center;
+    gap: 6px;
+    line-height: 1.25;
+  }
+
+  .tugas1-tab-btn svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
+  .tab-sub-text {
+    display: none;
+  }
+
+  .tugas1-quick-hint {
+    display: none;
+  }
+
+  /* Main Workspace Canvas */
+  .imk-main-canvas {
+    padding: 16px 12px 40px 12px;
+  }
+
+  /* ----------------------------------------------------
+     PAGE 1: Ringkasan Analisis (Executive Summary)
+     ---------------------------------------------------- */
+  .summary-free-canvas {
+    gap: 32px;
+  }
+
+  .free-hero-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .free-tagline {
+    font-size: 0.72rem;
+  }
+
+  .free-hero-title {
+    font-size: 1.65rem;
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+    margin-bottom: 8px;
+  }
+
+  .free-hero-sub {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  .free-stat-ribbon {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    background: var(--surface-subtle);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--seam-border);
+  }
+
+  .stat-divider {
+    display: none;
+  }
+
+  .free-stat-unit .stat-label {
+    font-size: 0.68rem;
+  }
+
+  .free-stat-unit .stat-value {
+    font-size: 1.05rem;
+  }
+
+  /* Section 1: DGTI */
+  .free-section {
+    gap: 16px;
+  }
+
+  .free-section-title {
+    gap: 10px;
+  }
+
+  .free-section-title .sec-num {
+    font-size: 0.8rem;
+    padding: 2px 7px;
+  }
+
+  .free-section-title h3 {
+    font-size: 1.25rem;
+  }
+
+  .free-dgti-strip {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .dgti-item {
+    padding: 12px 14px;
+  }
+
+  .dgti-head {
+    font-size: 1.12rem;
+  }
+
+  .dgti-desc {
+    font-size: 0.88rem;
+  }
+
+  .free-micro-notes {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .micro-note-item {
+    font-size: 0.85rem;
+    padding: 10px 12px;
+  }
+
+  /* Section 2: Norman Timeline Track */
+  .free-timeline-track {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 6px 2px 14px 2px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .free-timeline-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .timeline-step-btn {
+    flex-shrink: 0;
+    min-width: 68px;
+    scroll-snap-align: center;
+    padding: 6px 2px;
+  }
+
+  .timeline-step-btn .step-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  .timeline-step-btn .step-title {
+    font-size: 0.72rem;
+  }
+
+  .timeline-active-display {
+    padding: 16px 14px;
+    gap: 10px;
+  }
+
+  .active-meta-tag {
+    font-size: 0.76rem;
+  }
+
+  .active-columns {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .col-caption {
+    font-size: 0.76rem;
+  }
+
+  .col-val {
+    font-size: 0.98rem;
+  }
+
+  /* Section 3: Gulf Cases & Dark Pattern */
+  .free-split-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .free-cases-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .free-case-entry {
+    padding: 12px 14px;
+  }
+
+  .entry-title {
+    font-size: 1.1rem;
+  }
+
+  .entry-desc {
+    font-size: 0.88rem;
+  }
+
+  .free-dp-simulator {
+    padding: 16px 14px;
+    gap: 12px;
+  }
+
+  .dp-headline {
+    font-size: 1.15rem;
+  }
+
+  .dp-note {
+    font-size: 0.88rem;
+  }
+
+  .modal-row {
+    font-size: 0.88rem;
+  }
+
+  .chk-grp strong {
+    font-size: 0.92rem;
+  }
+
+  .toggle-amount {
+    font-size: 1rem;
+  }
+
+  .total-num {
+    font-size: 1.25rem;
+  }
+
+  .modal-pay-btn {
+    font-size: 0.88rem;
+    padding: 8px 14px;
+  }
+
+  /* Bottom CTA */
+  .free-bottom-cta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+  .cta-statement strong {
+    font-size: 1.2rem;
+  }
+
+  .cta-statement span {
+    font-size: 0.9rem;
+  }
+
+  .free-cta-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.95rem;
+    padding: 12px 18px;
+  }
+
+  /* ----------------------------------------------------
+     PAGE 2: Rancang Ulang (4 Kasus Mockup)
+     ---------------------------------------------------- */
+  .cases-stage-free {
+    padding: 0 0 32px 0;
+    gap: 20px;
+  }
+
+  .free-nav-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding-bottom: 12px;
+  }
+
+  .free-back-btn {
+    font-size: 0.85rem;
+    padding: 2px 0;
+  }
+
+  .free-case-switcher {
+    display: flex;
+    overflow-x: auto;
+    gap: 6px;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .free-case-switcher::-webkit-scrollbar {
+    display: none;
+  }
+
+  .free-case-tab {
+    flex-shrink: 0;
+    padding: 6px 12px;
+    gap: 6px;
+  }
+
+  .free-case-tab .tab-name {
+    font-size: 0.82rem;
+  }
+
+  .free-case-tab .tab-num {
+    font-size: 0.75rem;
+  }
+
+  .free-showcase-canvas {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .free-editorial-column {
+    gap: 18px;
+  }
+
+  .free-stage-label,
+  .free-theory-label {
+    font-size: 0.75rem;
+  }
+
+  .free-display-title {
+    font-size: 1.65rem;
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+  }
+
+  .free-narrative-flow {
+    gap: 14px;
+  }
+
+  .narrative-tag {
+    font-size: 0.72rem;
+  }
+
+  .narrative-text {
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  .free-controls-bar {
+    padding-top: 14px;
+  }
+
+  .free-step-counter {
+    font-size: 0.9rem;
+  }
+
+  /* Physical Phone Mockups Stage */
+  .free-mockups-stage {
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    width: 100%;
+  }
+
+  .free-phone-wrapper {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .free-phone-shadow {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .phone-device {
+    width: min(310px, 88vw);
+    height: 520px;
+    border-radius: 28px;
+    padding: 6px;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+  }
+
+  .phone-bezel {
+    border-radius: 22px;
+  }
+
+  .free-phone-label {
+    font-size: 0.78rem;
+    padding: 4px 12px;
+    gap: 6px;
+  }
+
+  /* Upcoming Assignment View */
+  .upcoming-container {
+    margin: 14px auto;
+  }
+
+  .upcoming-card {
+    padding: 24px 16px;
+    gap: 16px;
+  }
+
+  .upcoming-title {
+    font-size: 1.35rem;
+  }
+
+  .upcoming-desc {
+    font-size: 0.92rem;
+  }
+
+  .upcoming-timeline-box {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .timeline-header strong {
+    font-size: 0.88rem;
+  }
+
+  .timeline-points li {
+    font-size: 0.85rem;
+  }
+
+  .btn-back-tugas1 {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.88rem;
+    padding: 10px 14px;
+  }
+}
+
+/* 3. Small Mobile Screens (max-width: 420px) */
+@media (max-width: 420px) {
+  .asg-pill-name {
+    display: none;
+  }
+
+  .phone-device {
+    width: 290px;
+    height: 490px;
+  }
+
+  .free-hero-title {
+    font-size: 1.48rem;
+  }
+
+  .free-stat-ribbon {
+    grid-template-columns: 1fr;
+  }
+
+  .tugas1-tab-btn {
+    font-size: 0.74rem;
+    padding: 6px 4px;
   }
 }
