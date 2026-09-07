@@ -26,7 +26,7 @@ export default function App() {
       <header className="imk-top-header">
         <div className="top-header-left">
           <div className="portal-brand-block">
-            <GraduationCap size={22} className="text-teal" />
+            <GraduationCap size={26} className="text-teal" />
             <div className="brand-text-stack">
               <span className="brand-meta">PORTAL TUGAS IMK • INFORMATIKA UNS</span>
               <span className="brand-title">Interaksi Manusia & Komputer</span>
@@ -44,7 +44,7 @@ export default function App() {
             >
               <span className="asg-pill-number">{currentAssignment.number}</span>
               <span className="asg-pill-name">{currentAssignment.title}</span>
-              <ChevronDown size={14} className={`chevron-icon ${isAssignmentDropdownOpen ? 'open' : ''}`} />
+              <ChevronDown size={16} className={`chevron-icon ${isAssignmentDropdownOpen ? 'open' : ''}`} />
             </button>
 
             {isAssignmentDropdownOpen && (
@@ -75,7 +75,7 @@ export default function App() {
         {/* Header Right: Team Members */}
         <div className="top-header-right">
           <div className="team-pill-badge">
-            <Users size={15} />
+            <Users size={17} />
             <span>Kelompok 3: Zendinan • Faris • Revan</span>
           </div>
         </div>
@@ -89,7 +89,7 @@ export default function App() {
               className={`tugas1-tab-btn ${activePage === 'analisis' ? 'active' : ''}`}
               onClick={() => setActivePage('analisis')}
             >
-              <Layers size={17} />
+              <Layers size={20} />
               <span>Ringkasan Analisis <span className="tab-sub-text">(Executive Summary)</span></span>
             </button>
 
@@ -97,7 +97,7 @@ export default function App() {
               className={`tugas1-tab-btn ${activePage === 'kasus' ? 'active' : ''}`}
               onClick={() => setActivePage('kasus')}
             >
-              <Smartphone size={17} />
+              <Smartphone size={20} />
               <span>Rancang Ulang <span className="tab-sub-text">(4 Kasus Mockup)</span></span>
             </button>
           </div>
@@ -106,12 +106,12 @@ export default function App() {
             {activePage === 'analisis' ? (
               <button className="quick-switch-link" onClick={() => setActivePage('kasus')}>
                 <span>Langsung ke 4 Kasus Redesain</span>
-                <ArrowRight size={14} />
+                <ArrowRight size={16} />
               </button>
             ) : (
               <button className="quick-switch-link" onClick={() => setActivePage('analisis')}>
                 <span>Lihat Ringkasan Teori & Analisis</span>
-                <ArrowRight size={14} />
+                <ArrowRight size={16} />
               </button>
             )}
           </div>
