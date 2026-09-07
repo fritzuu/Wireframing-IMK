@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "npm --prefix web-interaktif-imk install",
+  "buildCommand": "npm --prefix web-interaktif-imk run build",
+  "outputDirectory": "web-interaktif-imk/dist",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "wireframing-imk-root",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix web-interaktif-imk run build",
+    "dev": "npm --prefix web-interaktif-imk run dev"
+  }
+}
