@@ -10,11 +10,12 @@ import {
 } from 'lucide-react';
 import PageAnalisisSummary from './components/pages/PageAnalisisSummary';
 import PageRancangUlangCases from './components/pages/PageRancangUlangCases';
+import PageUX from './components/pages/PageUX';
 import UpcomingAssignment from './components/UpcomingAssignment';
 import { projectMeta } from './data/analysisData';
 
 export default function App() {
-  const [activeAssignmentId, setActiveAssignmentId] = useState('tugas-1');
+  const [activeAssignmentId, setActiveAssignmentId] = useState('tugas-2');
   const [activePage, setActivePage] = useState('analisis'); // 'analisis' or 'kasus'
   const [isAssignmentDropdownOpen, setIsAssignmentDropdownOpen] = useState(false);
 
@@ -126,6 +127,8 @@ export default function App() {
           ) : (
             <PageRancangUlangCases onGoToAnalysis={() => setActivePage('analisis')} />
           )
+        ) : activeAssignmentId === 'tugas-2' ? (
+          <PageUX />
         ) : (
           <UpcomingAssignment 
             assignment={currentAssignment} 

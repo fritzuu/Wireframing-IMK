@@ -15,10 +15,10 @@ export const projectMeta = {
     {
       id: "tugas-2",
       number: "Tugas 2",
-      title: "Evaluasi Heuristik & User Journey Map",
-      status: "upcoming",
-      badge: "Mendatang",
-      summary: "Evaluasi 10 Prinsip Heuristik Nielsen pada sistem publik dan pemetaan User Journey end-to-end."
+      title: "UX Design — Token Jelas",
+      status: "completed",
+      badge: "Day 1–5",
+      summary: "Design Thinking dan User-Centered Design: kebutuhan, persona, ide, prototipe, dan evaluasi skenario."
     },
     {
       id: "tugas-3",
