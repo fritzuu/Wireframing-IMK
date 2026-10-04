@@ -1,3 +1,4 @@
+import { MotionButton } from '../motion/PortalMotion';
 import React, { useState } from 'react';
 import { 
   GitBranch, 
@@ -41,7 +42,7 @@ export default function SlideTeoriFlow() {
             const isSelected = item.step === activeStep;
             const phaseClass = item.phase === 'GOAL' ? 'node-goal' : item.phase === 'EXECUTION' ? 'node-exec' : 'node-eval';
             return (
-              <button
+              <MotionButton
                 key={item.step}
                 className={`norman-node-btn ${phaseClass} ${isSelected ? 'selected' : ''}`}
                 onClick={() => setActiveStep(item.step)}
@@ -49,7 +50,7 @@ export default function SlideTeoriFlow() {
                 <span className="node-num">0{item.step}</span>
                 <span className="node-name">{item.name}</span>
                 <span className="node-subtag">{item.phase}</span>
-              </button>
+              </MotionButton>
             );
           })}
         </div>

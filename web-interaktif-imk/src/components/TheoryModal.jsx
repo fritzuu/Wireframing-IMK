@@ -1,3 +1,4 @@
+import { MotionButton } from './motion/PortalMotion';
 import React from 'react';
 import { 
   X, 
@@ -30,9 +31,9 @@ export default function TheoryModal({ isOpen, onClose }) {
               <p className="modal-subtitle">{projectMeta.subject} • Skenario: Beli Token Rp500.000</p>
             </div>
           </div>
-          <button className="modal-close-btn" onClick={onClose}>
+          <MotionButton className="modal-close-btn" onClick={onClose}>
             <X size={20} />
-          </button>
+          </MotionButton>
         </div>
 
         {/* Modal Body */}
@@ -151,9 +152,9 @@ export default function TheoryModal({ isOpen, onClose }) {
 
         {/* Modal Footer */}
         <div className="modal-footer">
-          <button className="btn-modal-close" onClick={onClose}>
+          <MotionButton className="btn-modal-close" onClick={onClose}>
             Tutup Bedah Teori
-          </button>
+          </MotionButton>
         </div>
       </div>
     </div>

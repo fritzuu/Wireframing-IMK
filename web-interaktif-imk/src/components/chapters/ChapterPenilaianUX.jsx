@@ -1,3 +1,4 @@
+import { MotionButton } from '../motion/PortalMotion';
 import React from 'react';
 import { 
   AlertCircle, 
@@ -124,10 +125,10 @@ export default function ChapterPenilaianUX({ onNavigateToMockups }) {
             <h3>Lihat Bagaimana 4 Masalah di Atas Diperbaiki Secara Konkret</h3>
             <p>Bandingkan mockup Android asli vs usulan fiksasi rancang ulang berbasis teori IMK.</p>
           </div>
-          <button className="btn-cta-primary" onClick={onNavigateToMockups}>
+          <MotionButton className="btn-cta-primary" onClick={onNavigateToMockups}>
             <span>Buka Rancang Ulang Interaktif</span>
             <ArrowUpRight size={18} />
-          </button>
+          </MotionButton>
         </div>
       )}
     </div>

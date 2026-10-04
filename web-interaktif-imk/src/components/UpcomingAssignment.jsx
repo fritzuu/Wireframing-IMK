@@ -1,10 +1,11 @@
+import { MotionButton, MotionReveal } from './motion/PortalMotion';
 import React from 'react';
 import { Clock, Calendar, BookOpen, ArrowLeft, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
 
 export default function UpcomingAssignment({ assignment, onSelectAssignment }) {
   return (
     <div className="upcoming-container">
-      <div className="upcoming-card">
+      <MotionReveal className="upcoming-card">
         <div className="upcoming-badge">
           <Clock size={16} />
           <span>PORTAL TUGAS BERKELANJUTAN • {assignment.badge}</span>
@@ -31,15 +32,15 @@ export default function UpcomingAssignment({ assignment, onSelectAssignment }) {
         </div>
 
         <div className="upcoming-action-row">
-          <button 
+          <MotionButton
             className="btn-back-tugas1"
             onClick={() => onSelectAssignment('tugas-1')}
           >
             <ArrowLeft size={16} />
             <span>Kembali ke Tugas 1: Analisis PLN Mobile</span>
-          </button>
+          </MotionButton>
         </div>
-      </div>
+      </MotionReveal>
     </div>
   );
 }

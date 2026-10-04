@@ -1,3 +1,4 @@
+import { MotionSection } from '../motion/PortalMotion';
 import React from 'react';
 import { 
   FileText, 
@@ -43,7 +44,7 @@ export default function ChapterDokumenPDF() {
         </div>
 
         {/* Section 1 */}
-        <section className="pdf-section">
+        <MotionSection className="pdf-section">
           <h2 className="pdf-section-title">1. Bedah Sistem</h2>
           
           <h3 className="pdf-sub-title">Domain – Goal – Task – Intention</h3>
@@ -103,10 +104,10 @@ export default function ChapterDokumenPDF() {
             <li>Sering digunakan dalam kondisi urgensi/panik (listrik berbunyi/mati dan rumah gelap gulita).</li>
             <li>Rentan terhadap <em>multitasking</em> antar-aplikasi (harus berpindah ke aplikasi mobile banking) sehingga pengguna berisiko terdistraksi atau tidak sengaja menutup aplikasi PLN Mobile.</li>
           </ul>
-        </section>
+        </MotionSection>
 
         {/* Section 2 */}
-        <section className="pdf-section">
+        <MotionSection className="pdf-section">
           <h2 className="pdf-section-title">2. Penilaian Interaksi</h2>
           
           <h3 className="pdf-sub-title">Gulf of Execution</h3>
@@ -139,10 +140,10 @@ export default function ChapterDokumenPDF() {
           <div className="pdf-callout-box">
             <strong>Misdirection (Salah Arah):</strong> Toggle donasi (Electree Rp1.000) diletakkan persis di atas total biaya dan tombol "Lanjutkan Pembayaran". Ini berisiko terpencet secara tidak sengaja oleh pengguna yang sedang terburu-buru.
           </div>
-        </section>
+        </MotionSection>
 
         {/* Section 3 */}
-        <section className="pdf-section">
+        <MotionSection className="pdf-section">
           <h2 className="pdf-section-title">3. Rancang Ulang (Redesign Cases)</h2>
           <div className="pdf-redesign-summary-grid">
             {gulfItems.map((item, idx) => (
@@ -159,7 +160,7 @@ export default function ChapterDokumenPDF() {
               </div>
             ))}
           </div>
-        </section>
+        </MotionSection>
       </div>
     </div>
   );

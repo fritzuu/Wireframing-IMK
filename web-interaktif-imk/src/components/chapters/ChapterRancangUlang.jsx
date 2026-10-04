@@ -1,3 +1,4 @@
+import { MotionButton, MotionSection } from '../motion/PortalMotion';
 import React, { useState, useEffect } from 'react';
 import { 
   ChevronLeft, 
@@ -112,7 +113,7 @@ export default function ChapterRancangUlang() {
       <div className="cases-tab-nav">
         <div className="cases-tab-list">
           {gulfItems.map((item, idx) => (
-            <button
+            <MotionButton
               key={item.id}
               className={`case-tab-item ${currentIdx === idx ? 'active' : ''}`}
               onClick={() => {
@@ -122,7 +123,7 @@ export default function ChapterRancangUlang() {
             >
               <span className="case-tab-num">Kasus {idx + 1}</span>
               <span className="case-tab-name">{item.title}</span>
-            </button>
+            </MotionButton>
           ))}
         </div>
         <div className="case-counter-badge">
@@ -133,7 +134,7 @@ export default function ChapterRancangUlang() {
       {/* Main Split Layout: Left Deck Analysis vs Right Mockup Pair */}
       <div className="redesign-main-split">
         {/* Left Column: Clear Presentation Points */}
-        <section className="redesign-left-card">
+        <MotionSection className="redesign-left-card">
           <div className="slide-deck-header">
             <div className="slide-type-tag">
               {currentGulf.type === 'EXECUTION' ? 'TAHAP EKSEKUSI (NORMAN)' : 'TAHAP EVALUASI (NORMAN)'}
@@ -180,27 +181,27 @@ export default function ChapterRancangUlang() {
 
           {/* Step Navigation Buttons */}
           <div className="deck-inline-nav">
-            <button 
+            <MotionButton
               className="ppt-nav-btn" 
               onClick={goToPrev}
               disabled={currentIdx === 0}
             >
               <ChevronLeft size={18} />
               <span>Kasus Sebelumnya</span>
-            </button>
-            <button 
+            </MotionButton>
+            <MotionButton
               className="ppt-nav-btn primary" 
               onClick={goToNext}
               disabled={currentIdx === gulfItems.length - 1}
             >
               <span>Kasus Berikutnya</span>
               <ChevronRight size={18} />
-            </button>
+            </MotionButton>
           </div>
-        </section>
+        </MotionSection>
 
         {/* Right Column: Visual Mockup Showcase (Side-by-Side) */}
-        <section className="redesign-right-deck">
+        <MotionSection className="redesign-right-deck">
           {/* Mockup 1: Saat Ini */}
           <div className="ppt-phone-wrapper">
             <div className="ppt-phone-tag tag-issue">
@@ -232,7 +233,7 @@ export default function ChapterRancangUlang() {
               </PhoneMockup>
             </div>
           </div>
-        </section>
+        </MotionSection>
       </div>
     </div>
   );

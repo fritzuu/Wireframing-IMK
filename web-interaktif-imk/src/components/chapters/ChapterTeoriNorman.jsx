@@ -1,3 +1,4 @@
+import { MotionButton } from '../motion/PortalMotion';
 import React, { useState } from 'react';
 import { 
   GitBranch, 
@@ -47,14 +48,14 @@ export default function ChapterTeoriNorman() {
               const isSelected = item.step === activeStep;
               const stepTypeClass = item.phase === 'GOAL' ? 'step-goal' : item.phase === 'EXECUTION' ? 'step-exec' : 'step-eval';
               return (
-                <button
+                <MotionButton
                   key={item.step}
                   className={`norman-step-btn ${stepTypeClass} ${isSelected ? 'active' : ''}`}
                   onClick={() => setActiveStep(item.step)}
                 >
                   <span className="step-num">{item.step}</span>
                   <span className="step-name">{item.name}</span>
-                </button>
+                </MotionButton>
               );
             })}
           </div>

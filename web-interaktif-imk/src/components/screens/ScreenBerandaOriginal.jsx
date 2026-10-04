@@ -1,3 +1,4 @@
+import { MotionButton } from '../motion/PortalMotion';
 import React from 'react';
 import { 
   Home, 
@@ -46,8 +47,8 @@ export default function ScreenBerandaOriginal({ activeBadgeId, onBadgeClick }) {
         </div>
 
         <div className="listrik-action-row">
-          <button className="btn-pln-outline">Pasang Baru</button>
-          <button className="btn-pln-solid">+ ID Pelanggan</button>
+          <MotionButton className="btn-pln-outline">Pasang Baru</MotionButton>
+          <MotionButton className="btn-pln-solid">+ ID Pelanggan</MotionButton>
         </div>
       </div>
 

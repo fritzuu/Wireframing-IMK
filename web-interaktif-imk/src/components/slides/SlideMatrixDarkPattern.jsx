@@ -1,3 +1,4 @@
+import { MotionButton } from '../motion/PortalMotion';
 import React, { useState } from 'react';
 import { 
   ShieldAlert, 
@@ -166,9 +167,9 @@ export default function SlideMatrixDarkPattern({ onNavigateToMockupCase }) {
                   Rp {donateToggled ? '504.000' : '503.000'}
                 </div>
               </div>
-              <button className="sim-btn-checkout">
+              <MotionButton className="sim-btn-checkout">
                 Lanjutkan Pembayaran
-              </button>
+              </MotionButton>
             </div>
           </div>
 

@@ -1,3 +1,4 @@
+import { MotionButton } from '../motion/PortalMotion';
 import React, { useState } from 'react';
 import { ArrowLeft, Info, X } from 'lucide-react';
 
@@ -16,9 +17,9 @@ export default function ScreenTokenOriginal({ activeBadgeId, onBadgeClick }) {
     <div className="pln-app-screen token-screen">
       {/* Top Header */}
       <div className="screen-nav-header">
-        <button className="nav-back-btn">
+        <MotionButton className="nav-back-btn">
           <ArrowLeft size={20} />
-        </button>
+        </MotionButton>
         <span className="nav-title">Token & Pembayaran</span>
         <div style={{ width: 24 }}></div>
       </div>
@@ -56,7 +57,7 @@ export default function ScreenTokenOriginal({ activeBadgeId, onBadgeClick }) {
               <span>520511772413</span>
               <X size={15} className="clear-icon" />
             </div>
-            <button className="btn-periksa">Periksa</button>
+            <MotionButton className="btn-periksa">Periksa</MotionButton>
           </div>
         </div>
 
@@ -95,7 +96,7 @@ export default function ScreenTokenOriginal({ activeBadgeId, onBadgeClick }) {
         {/* Grid of Nominal Buttons */}
         <div className="nominal-grid-container">
           {nominalList.map((nominal) => (
-            <button
+            <MotionButton
               key={nominal}
               className={`nominal-btn ${selectedNominal === nominal ? 'selected' : ''}`}
               onClick={() => setSelectedNominal(nominal)}
@@ -104,16 +105,16 @@ export default function ScreenTokenOriginal({ activeBadgeId, onBadgeClick }) {
               {nominal === 'Rp500.000' && (
                 <span className="scenario-tag">Skenario Tugas</span>
               )}
-            </button>
+            </MotionButton>
           ))}
         </div>
       </div>
 
       {/* Bottom Fixed Action */}
       <div className="token-bottom-bar">
-        <button className="btn-selanjutnya">
+        <MotionButton className="btn-selanjutnya">
           Selanjutnya
-        </button>
+        </MotionButton>
       </div>
     </div>
   );

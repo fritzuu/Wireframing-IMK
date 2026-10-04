@@ -1,3 +1,4 @@
+import { MotionButton } from '../motion/PortalMotion';
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 
@@ -6,9 +7,9 @@ export default function ScreenDataPribadiOriginal({ activeBadgeId, onBadgeClick 
     <div className="pln-app-screen form-screen">
       {/* Top Header */}
       <div className="screen-nav-header">
-        <button className="nav-back-btn">
+        <MotionButton className="nav-back-btn">
           <ArrowLeft size={20} />
-        </button>
+        </MotionButton>
         <span className="nav-title">Pelindungan Data Pribadi</span>
         
         {/* PROBLEM: Tiny Lewati Button at top right */}
@@ -64,7 +65,7 @@ export default function ScreenDataPribadiOriginal({ activeBadgeId, onBadgeClick 
               placeholder="Masukkan NIK Anda" 
               readOnly 
             />
-            <button className="btn-periksa">Periksa</button>
+            <MotionButton className="btn-periksa">Periksa</MotionButton>
           </div>
           <p className="nik-helper-text">Pastikan anda klik "Periksa" pada NIK Anda</p>
         </div>
@@ -83,9 +84,9 @@ export default function ScreenDataPribadiOriginal({ activeBadgeId, onBadgeClick 
 
       {/* Fixed Bottom Action: Disabled Lanjutkan */}
       <div className="form-bottom-bar">
-        <button className="btn-pln-disabled" disabled>
+        <MotionButton className="btn-pln-disabled" disabled>
           Lanjutkan
-        </button>
+        </MotionButton>
       </div>
     </div>
   );

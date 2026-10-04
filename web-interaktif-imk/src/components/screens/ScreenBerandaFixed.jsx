@@ -1,3 +1,4 @@
+import { MotionButton } from '../motion/PortalMotion';
 import React from 'react';
 import { 
   Home, 
@@ -47,8 +48,8 @@ export default function ScreenBerandaFixed({ activeBadgeId, onBadgeClick }) {
         </div>
 
         <div className="listrik-action-row">
-          <button className="btn-pln-outline">Pasang Baru</button>
-          <button className="btn-pln-solid">+ ID Pelanggan</button>
+          <MotionButton className="btn-pln-outline">Pasang Baru</MotionButton>
+          <MotionButton className="btn-pln-solid">+ ID Pelanggan</MotionButton>
         </div>
       </div>
 
@@ -162,7 +163,7 @@ export default function ScreenBerandaFixed({ activeBadgeId, onBadgeClick }) {
           <User size={13} className="text-muted" />
           <span className="compact-banner-text">Verifikasi email akun (25%)</span>
         </div>
-        <button className="compact-banner-btn">Lengkapi</button>
+        <MotionButton className="compact-banner-btn">Lengkapi</MotionButton>
       </div>
 
       {/* Floating Robot Mascot Helper */}

@@ -1,0 +1,12 @@
+/* Motion owns transforms; existing CSS keeps colors, borders, and focus styles. */
+.portal-motion-button, .portal-motion-link {
+  transition-property: background-color, color, border-color, box-shadow !important;
+}
+.portal-motion-button { position: relative; }
+.portal-active-line { display: none; }
+.portal-page-motion { width: 100%; }
+.ux-day-motion { display: flex; flex-direction: column; gap: 40px; }
+.portal-motion-section, .portal-motion-card { transform-origin: center top; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}

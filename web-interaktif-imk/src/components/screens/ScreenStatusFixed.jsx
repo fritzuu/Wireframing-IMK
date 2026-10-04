@@ -1,3 +1,4 @@
+import { MotionButton } from '../motion/PortalMotion';
 import React, { useState, useEffect } from 'react';
 import { 
   Home, 
@@ -89,18 +90,18 @@ export default function ScreenStatusFixed({ activeBadgeId, onBadgeClick }) {
               <span className="va-label">No. Virtual Account</span>
               <span className="va-number">82410 520511772413</span>
             </div>
-            <button className="btn-copy-mini" onClick={handleCopy}>
+            <MotionButton className="btn-copy-mini" onClick={handleCopy}>
               {copied ? <Check size={14} className="text-green" /> : <Copy size={14} />}
               <span>{copied ? 'Tersalin' : 'Salin'}</span>
-            </button>
+            </MotionButton>
           </div>
         </div>
 
         {/* Action Button */}
-        <button className="btn-continue-payment">
+        <MotionButton className="btn-continue-payment">
           <span>Lanjutkan Bayar Sekarang</span>
           <ArrowRight size={15} />
-        </button>
+        </MotionButton>
       </div>
 
       {/* Main Card */}

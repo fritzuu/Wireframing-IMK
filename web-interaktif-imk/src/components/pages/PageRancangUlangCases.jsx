@@ -1,3 +1,4 @@
+import { MotionButton, MotionSwitch, MotionCard } from '../motion/PortalMotion';
 import React, { useState, useEffect } from 'react';
 import { 
   ChevronLeft, 
@@ -149,14 +150,15 @@ export default function PageRancangUlangCases({ onGoToAnalysis }) {
     <div className="cases-stage-free">
       {/* 1. Minimal Top Bar (No Heavy Box) */}
       <div className="free-nav-bar">
-        <button className="free-back-btn" onClick={onGoToAnalysis}>
+        <MotionButton className="free-back-btn" onClick={onGoToAnalysis}>
           <ArrowLeft size={16} />
           <span>Ringkasan Teori</span>
-        </button>
+        </MotionButton>
 
         <div className="free-case-switcher">
           {presentationCases.map((item, idx) => (
-            <button
+            <MotionButton
+              indicator="tugas1-case-tab" active={selectedCaseIdx === idx}
               key={item.id}
               className={`free-case-tab ${selectedCaseIdx === idx ? 'active' : ''}`}
               onClick={() => {
@@ -166,13 +168,13 @@ export default function PageRancangUlangCases({ onGoToAnalysis }) {
             >
               <span className="tab-num">0{idx + 1}</span>
               <span className="tab-name">{item.title}</span>
-            </button>
+            </MotionButton>
           ))}
         </div>
       </div>
 
       {/* 2. Open Canvas (Fluid Split: Left Editorial Narrative + Right Floating Mockups) */}
-      <div className="free-showcase-canvas">
+      <MotionSwitch className="free-showcase-canvas" motionKey={currentCase.id}>
         {/* Left Column: Airy, Unboxed Editorial Storytelling */}
         <div className="free-editorial-column">
           <div className="free-case-headline">
@@ -220,22 +222,22 @@ export default function PageRancangUlangCases({ onGoToAnalysis }) {
             </div>
 
             <div className="free-btn-group">
-              <button 
+              <MotionButton
                 className="free-nav-arrow"
                 onClick={goToPrev}
                 disabled={selectedCaseIdx === 0}
                 title="Slide Sebelumnya (←)"
               >
                 <ChevronLeft size={18} />
-              </button>
-              <button 
+              </MotionButton>
+              <MotionButton
                 className="free-nav-arrow primary"
                 onClick={goToNext}
                 disabled={selectedCaseIdx === presentationCases.length - 1}
                 title="Slide Berikutnya (→)"
               >
                 <ChevronRight size={18} />
-              </button>
+              </MotionButton>
             </div>
           </div>
         </div>
@@ -243,7 +245,7 @@ export default function PageRancangUlangCases({ onGoToAnalysis }) {
         {/* Right Column: Hero Floating Phone Mockups in Space */}
         <div className="free-mockups-stage">
           {/* Phone 1: Desain Asli */}
-          <div className="free-phone-wrapper">
+          <MotionCard className="free-phone-wrapper">
             <div className="free-phone-label asli">
               <span className="label-status">DESAIN ASLI</span>
               <span className="label-sub">{currentCase.tagOriginal}</span>
@@ -256,10 +258,10 @@ export default function PageRancangUlangCases({ onGoToAnalysis }) {
                 {renderScreen(currentCase.id, false)}
               </PhoneMockup>
             </div>
-          </div>
+          </MotionCard>
 
           {/* Phone 2: Usulan Fiksasi */}
-          <div className="free-phone-wrapper">
+          <MotionCard className="free-phone-wrapper">
             <div className="free-phone-label fiksasi">
               <span className="label-status">USULAN FIKSASI</span>
               <span className="label-sub">{currentCase.tagFixed}</span>
@@ -272,9 +274,9 @@ export default function PageRancangUlangCases({ onGoToAnalysis }) {
                 {renderScreen(currentCase.id, true)}
               </PhoneMockup>
             </div>
-          </div>
+          </MotionCard>
         </div>
-      </div>
+      </MotionSwitch>
     </div>
   );
 }

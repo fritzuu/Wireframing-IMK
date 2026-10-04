@@ -1,0 +1,54 @@
+/* Tugas 2 uses the existing free-canvas, timeline, and comparison styles. */
+.ux-workspace { width: 100%; }
+.ux-nav { margin: -24px -32px 28px; padding-left: 32px; padding-right: 32px; gap: 16px; }
+.ux-nav .quick-switch-link { text-decoration: none; }
+.ux-nav .tugas1-nav-tabs { flex-wrap: wrap; }
+.ux-body { padding: 16px 16px 48px; }
+.ux-body .free-hero-header { flex-wrap: wrap; }
+.ux-body .free-stat-ribbon { gap: 24px; }
+.ux-body .stat-value { font-size: 1.25rem; }
+.ux-summary ul { padding-left: 18px; font-size: .98rem; color: var(--ink-secondary); }
+.ux-summary li + li { margin-top: 10px; }
+.ux-source-note { font-size: .85rem; color: var(--ink-tertiary); border-left: 3px solid var(--pln-teal); padding: 4px 14px; }
+.ux-table-wrap { overflow-x: auto; }
+.ux-table { width: 100%; border-collapse: collapse; text-align: left; }
+.ux-table th { font: 800 .82rem var(--font-mono); color: var(--pln-teal-deep); padding: 14px; border-bottom: 2px solid var(--seam-border); }
+.ux-table td { padding: 14px; border-bottom: 1px solid var(--seam-border); vertical-align: top; font-size: .98rem; }
+.ux-profiles { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.ux-profile { border-top: 3px solid var(--pln-teal); padding: 20px; background: rgba(0, 135, 145, .035); display: flex; flex-direction: column; gap: 12px; }
+.ux-profile h4 { font-size: 1.2rem; }
+.ux-profile p { font-size: .98rem; }
+.ux-profile blockquote { border-left: 2px solid var(--pln-teal-border); padding-left: 14px; font-weight: 650; }
+.ux-small { font-size: .84rem; line-height: 1.6; color: var(--ink-tertiary); }
+.ux-report-figure img { width: 100%; max-width: 1100px; height: auto; }
+.ux-report-figure figcaption { margin-top: 8px; }
+.ux-problem { font-size: 1.5rem; font-weight: 700; line-height: 1.55; letter-spacing: -.02em; }
+.ux-list-block { display: flex; flex-direction: column; gap: 16px; }
+.ux-list-block ul, .ux-list-block ol { padding-left: 26px; }
+.ux-list-block li + li { margin-top: 10px; }
+.ux-screen-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.ux-screen-card { border: 0; border-top: 2px solid var(--seam-border); background: transparent; padding: 16px 10px; display: flex; flex-direction: column; align-items: center; gap: 12px; cursor: pointer; color: var(--ink-primary); font: inherit; text-align: center; }
+.ux-screen-card:hover { border-color: var(--pln-teal); background: var(--pln-teal-surface); }
+.ux-screen-card img { width: 100%; max-width: 180px; height: auto; border-radius: 18px; box-shadow: var(--shadow-phone-real); }
+.ux-screen-image { width: 100%; max-width: 275px; height: auto; border-radius: 24px; box-shadow: var(--shadow-phone-real); }
+.ux-download { display: inline-flex; align-items: center; gap: 8px; color: var(--pln-teal-deep); font-size: .9rem; font-weight: 750; text-decoration: none; }
+.ux-download:hover { text-decoration: underline; }
+.ux-next-day { align-self: flex-end; }
+.ux-workspace button:focus-visible, .ux-workspace a:focus-visible { outline: 3px solid var(--pln-teal); outline-offset: 4px; }
+@media (max-width: 1200px) {
+  .ux-nav { margin: 0 0 28px; padding: 0; flex-wrap: wrap; }
+  .ux-profiles { gap: 20px; }
+  .ux-screen-gallery { gap: 12px; }
+}
+@media (max-width: 768px) {
+  .ux-body { padding: 0; }
+  .ux-nav .tugas1-nav-tabs { gap: 4px; }
+  .ux-nav .tugas1-tab-btn { padding: 9px 10px; font-size: .9rem; }
+  .ux-nav .tab-sub-text { display: none; }
+  .ux-day-track { overflow-x: auto; gap: 16px; }
+  .ux-day-track .timeline-step-btn { min-width: 120px; }
+  .ux-profiles { grid-template-columns: 1fr; }
+  .ux-screen-gallery { grid-template-columns: 1fr 1fr; }
+  .ux-problem { font-size: 1.15rem; }
+  .ux-table { min-width: 580px; }
+}

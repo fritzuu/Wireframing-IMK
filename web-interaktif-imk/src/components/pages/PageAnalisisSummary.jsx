@@ -1,3 +1,4 @@
+import { MotionButton, MotionSection, MotionReveal, MotionSwitch, MotionCard } from '../motion/PortalMotion';
 import React, { useState } from 'react';
 import { 
   Zap, 
@@ -33,7 +34,7 @@ export default function PageAnalisisSummary({ onGoToCases }) {
   return (
     <div className="summary-free-canvas">
       {/* 1. Open Presentation Header (No Heavy Box Border) */}
-      <div className="free-hero-header">
+      <MotionReveal className="free-hero-header">
         <div className="hero-text-block">
           <span className="free-tagline">TUGAS 1 IMK • RINGKASAN EKSEKUTIF</span>
           <h1 className="free-hero-title">Analisis Interaksi Aplikasi PLN Mobile</h1>
@@ -59,10 +60,10 @@ export default function PageAnalisisSummary({ onGoToCases }) {
             <strong className="stat-value text-teal">BCA Virtual Account</strong>
           </div>
         </div>
-      </div>
+      </MotionReveal>
 
       {/* 2. Dekomposisi Sistem: Fluid Horizontal Flow */}
-      <section className="free-section">
+      <MotionSection className="free-section">
         <div className="free-section-title">
           <span className="sec-num">01</span>
           <h3>Dekomposisi Sistem (DGTI & Ergonomi)</h3>
@@ -70,26 +71,26 @@ export default function PageAnalisisSummary({ onGoToCases }) {
 
         {/* 4 Open Columns with Hairline Separation */}
         <div className="free-dgti-strip">
-          <div className="dgti-item">
+          <MotionCard className="dgti-item">
             <span className="dgti-code">DOMAIN</span>
             <strong className="dgti-head">Listrik Prabayar</strong>
             <p className="dgti-desc">Utilitas kontinuitas energi rumah tangga.</p>
-          </div>
-          <div className="dgti-item highlight">
+          </MotionCard>
+          <MotionCard className="dgti-item highlight">
             <span className="dgti-code">GOAL</span>
             <strong className="dgti-head">Listrik Segera Nyala</strong>
             <p className="dgti-desc">Urgensi primer; zero-tolerance terhadap delay.</p>
-          </div>
-          <div className="dgti-item">
+          </MotionCard>
+          <MotionCard className="dgti-item">
             <span className="dgti-code">TASK</span>
             <strong className="dgti-head">Transaksi Rp 500k</strong>
             <p className="dgti-desc">Input ID Pelanggan, pilih nominal, bayar via VA.</p>
-          </div>
-          <div className="dgti-item">
+          </MotionCard>
+          <MotionCard className="dgti-item">
             <span className="dgti-code">INTENTION</span>
             <strong className="dgti-head">Salin VA Secepatnya</strong>
             <p className="dgti-desc">Selesaikan checkout tanpa friksi form atau distraksi.</p>
-          </div>
+          </MotionCard>
         </div>
 
         {/* 2 Open Micro-Notes */}
@@ -103,10 +104,10 @@ export default function PageAnalisisSummary({ onGoToCases }) {
             <span><b>Ergonomi Mobile:</b> Thumb-Zone di bawah; risiko putus alur saat switch ke m-Banking.</span>
           </div>
         </div>
-      </section>
+      </MotionSection>
 
       {/* 3. Siklus 7 Don Norman: Interactive Open Timeline */}
-      <section className="free-section">
+      <MotionSection className="free-section">
         <div className="free-section-title">
           <span className="sec-num">02</span>
           <h3>Siklus 7 Tahapan Don Norman</h3>
@@ -116,19 +117,20 @@ export default function PageAnalisisSummary({ onGoToCases }) {
           {/* Horizontal Track */}
           <div className="free-timeline-track">
             {normanSteps.map((item) => (
-              <button
+              <MotionButton
+                indicator="norman-step" active={item.step === activeNormanStep}
                 key={item.step}
                 className={`timeline-step-btn ${item.step === activeNormanStep ? 'active' : ''}`}
                 onClick={() => setActiveNormanStep(item.step)}
               >
                 <span className="step-circle">{item.step}</span>
                 <span className="step-title">{item.name}</span>
-              </button>
+              </MotionButton>
             ))}
           </div>
 
           {/* Active Step Open Inspector */}
-          <div className="timeline-active-display">
+          <MotionSwitch className="timeline-active-display" motionKey={activeNormanStep}>
             <div className="active-meta-tag">
               TAHAP 0{currentStep.step} / 07 • {currentStep.phase === 'GOAL' ? 'PENETAPAN TUJUAN' : currentStep.phase === 'EXECUTION' ? 'GULF OF EXECUTION (AKSI)' : 'GULF OF EVALUATION (STATUS)'}
             </div>
@@ -142,12 +144,12 @@ export default function PageAnalisisSummary({ onGoToCases }) {
                 <strong className="col-val">{currentStep.system}</strong>
               </div>
             </div>
-          </div>
+          </MotionSwitch>
         </div>
-      </section>
+      </MotionSection>
 
       {/* 4. 4 Jurang Interaksi (Gulf) & Dark Pattern */}
-      <section className="free-section">
+      <MotionSection className="free-section">
         <div className="free-section-title">
           <span className="sec-num">03</span>
           <h3>Identifikasi 4 Jurang Interaksi & Dark Pattern</h3>
@@ -156,41 +158,41 @@ export default function PageAnalisisSummary({ onGoToCases }) {
         <div className="free-split-layout">
           {/* Left: 4 Open Case Items */}
           <div className="free-cases-list">
-            <div className="free-case-entry">
+            <MotionCard className="free-case-entry">
               <div className="entry-head">
                 <span className="entry-id">KASUS 01</span>
                 <span className="entry-theory">Hick's Law</span>
               </div>
               <h4 className="entry-title">Beban Kognitif Beranda</h4>
               <p className="entry-desc">Banner profil 25% merebut fokus; menu listrik tenggelam di bawah.</p>
-            </div>
+            </MotionCard>
 
-            <div className="free-case-entry">
+            <MotionCard className="free-case-entry">
               <div className="entry-head">
                 <span className="entry-id">KASUS 02</span>
                 <span className="entry-theory">Thumb Zone</span>
               </div>
               <h4 className="entry-title">Tombol 'Lewati' Tersembunyi</h4>
               <p className="entry-desc">Tombol bypass NIK ditaruh di pojok kanan atas di luar jangkauan satu tangan.</p>
-            </div>
+            </MotionCard>
 
-            <div className="free-case-entry">
+            <MotionCard className="free-case-entry">
               <div className="entry-head">
                 <span className="entry-id">KASUS 03</span>
                 <span className="entry-theory">Visibility of Status</span>
               </div>
               <h4 className="entry-title">Blank Spot Pasca M-Banking</h4>
               <p className="entry-desc">Beranda tidak memberi tanda ada tagihan Rp500k aktif saat user kembali dari bank.</p>
-            </div>
+            </MotionCard>
 
-            <div className="free-case-entry">
+            <MotionCard className="free-case-entry">
               <div className="entry-head">
                 <span className="entry-id">KASUS 04</span>
                 <span className="entry-theory">Real World Match</span>
               </div>
               <h4 className="entry-title">Format Kuota kWh Ambigu</h4>
               <p className="entry-desc">Format angka rasio '0 / 1.584 kWh' membingungkan tanpa keterangan jelas.</p>
-            </div>
+            </MotionCard>
           </div>
 
           {/* Right: Floating Dark Pattern Simulator */}
@@ -228,12 +230,12 @@ export default function PageAnalisisSummary({ onGoToCases }) {
                   <span className="total-lbl">Total Bayar:</span>
                   <strong className="total-num">Rp {donateToggled ? '504.000' : '503.000'}</strong>
                 </div>
-                <button className="modal-pay-btn">Bayar Sekarang</button>
+                <MotionButton className="modal-pay-btn">Bayar Sekarang</MotionButton>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </MotionSection>
 
       {/* 5. Fluid Bottom Switcher to Cases */}
       <div className="free-bottom-cta">
@@ -241,10 +243,10 @@ export default function PageAnalisisSummary({ onGoToCases }) {
           <strong>Solusi Fiksasi: Rancang Ulang 4 Kasus</strong>
           <span>Periksa mockup desain asli vs usulan fiksasi berdampingan.</span>
         </div>
-        <button className="free-cta-btn" onClick={onGoToCases}>
+        <MotionButton className="free-cta-btn" onClick={onGoToCases}>
           <span>Buka 4 Mockup Redesain</span>
           <ArrowRight size={17} />
-        </button>
+        </MotionButton>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { MotionButton } from '../motion/PortalMotion';
 import React from 'react';
 import { ArrowLeft, Clock, ShieldCheck } from 'lucide-react';
 
@@ -6,9 +7,9 @@ export default function ScreenDataPribadiFixed({ activeBadgeId, onBadgeClick }) 
     <div className="pln-app-screen form-screen fixed-screen">
       {/* Top Header */}
       <div className="screen-nav-header">
-        <button className="nav-back-btn">
+        <MotionButton className="nav-back-btn">
           <ArrowLeft size={20} />
-        </button>
+        </MotionButton>
         <span className="nav-title">Pelindungan Data Pribadi</span>
         <div style={{ width: 24 }}></div>
       </div>
@@ -53,7 +54,7 @@ export default function ScreenDataPribadiFixed({ activeBadgeId, onBadgeClick }) 
               placeholder="Masukkan NIK Anda" 
               readOnly 
             />
-            <button className="btn-periksa">Periksa</button>
+            <MotionButton className="btn-periksa">Periksa</MotionButton>
           </div>
           <p className="nik-helper-text">Pastikan anda klik "Periksa" pada NIK Anda</p>
         </div>
@@ -88,12 +89,12 @@ export default function ScreenDataPribadiFixed({ activeBadgeId, onBadgeClick }) 
           <span className="pin-pulse"></span>
         </div>
 
-        <button className="btn-pln-primary">
+        <MotionButton className="btn-pln-primary">
           Simpan Data Pribadi
-        </button>
-        <button className="btn-pln-outline-wide">
+        </MotionButton>
+        <MotionButton className="btn-pln-outline-wide">
           Lewati Sementara & Bayar Token →
-        </button>
+        </MotionButton>
       </div>
     </div>
   );

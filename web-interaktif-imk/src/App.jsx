@@ -1,3 +1,4 @@
+import { MotionButton, MotionReveal, MotionSwitch, MotionPopover } from './components/motion/PortalMotion';
 import React, { useState } from 'react';
 import { 
   GraduationCap, 
@@ -6,15 +7,15 @@ import {
   Smartphone, 
   ChevronDown,
   ArrowRight,
-  BookOpen
 } from 'lucide-react';
 import PageAnalisisSummary from './components/pages/PageAnalisisSummary';
 import PageRancangUlangCases from './components/pages/PageRancangUlangCases';
+import PageUX from './components/pages/PageUX';
 import UpcomingAssignment from './components/UpcomingAssignment';
 import { projectMeta } from './data/analysisData';
 
 export default function App() {
-  const [activeAssignmentId, setActiveAssignmentId] = useState('tugas-1');
+  const [activeAssignmentId, setActiveAssignmentId] = useState('tugas-2');
   const [activePage, setActivePage] = useState('analisis'); // 'analisis' or 'kasus'
   const [isAssignmentDropdownOpen, setIsAssignmentDropdownOpen] = useState(false);
 
@@ -23,7 +24,7 @@ export default function App() {
   return (
     <div className="imk-master-viewport">
       {/* 1. Global Academic Portal Header */}
-      <header className="imk-top-header">
+      <MotionReveal as="header" className="imk-top-header">
         <div className="top-header-left">
           <div className="portal-brand-block">
             <GraduationCap size={26} className="text-teal" />
@@ -37,7 +38,7 @@ export default function App() {
 
           {/* Continuous Multi-Assignment Switcher */}
           <div className="assignment-selector-container">
-            <button 
+            <MotionButton
               className="assignment-selector-trigger"
               onClick={() => setIsAssignmentDropdownOpen(!isAssignmentDropdownOpen)}
               title="Pilih Tugas Kuliah Berkelanjutan"
@@ -45,13 +46,12 @@ export default function App() {
               <span className="asg-pill-number">{currentAssignment.number}</span>
               <span className="asg-pill-name">{currentAssignment.title}</span>
               <ChevronDown size={16} className={`chevron-icon ${isAssignmentDropdownOpen ? 'open' : ''}`} />
-            </button>
+            </MotionButton>
 
-            {isAssignmentDropdownOpen && (
-              <div className="assignment-dropdown-popover">
+            <MotionPopover open={isAssignmentDropdownOpen} className="assignment-dropdown-popover">
                 <div className="popover-heading">Daftar Tugas Kuliah IMK:</div>
                 {projectMeta.assignments.map((asg) => (
-                  <button
+                  <MotionButton
                     key={asg.id}
                     className={`asg-dropdown-item ${activeAssignmentId === asg.id ? 'active' : ''}`}
                     onClick={() => {
@@ -65,10 +65,9 @@ export default function App() {
                       <span className={`asg-item-badge ${asg.status}`}>{asg.badge}</span>
                     </div>
                     <span className="asg-item-title">{asg.title}</span>
-                  </button>
+                  </MotionButton>
                 ))}
-              </div>
-            )}
+            </MotionPopover>
           </div>
         </div>
 
@@ -79,40 +78,40 @@ export default function App() {
             <span>Kelompok 3: Zendinan • Faris • Revan</span>
           </div>
         </div>
-      </header>
+      </MotionReveal>
 
       {/* 2. Tugas 1 Primary Navigation (Only 2 Unified Pages) */}
       {activeAssignmentId === 'tugas-1' && (
         <nav className="tugas1-nav-bar">
           <div className="tugas1-nav-tabs">
-            <button
+            <MotionButton
               className={`tugas1-tab-btn ${activePage === 'analisis' ? 'active' : ''}`}
               onClick={() => setActivePage('analisis')}
             >
               <Layers size={20} />
               <span>Ringkasan Analisis <span className="tab-sub-text">(Executive Summary)</span></span>
-            </button>
+            </MotionButton>
 
-            <button
+            <MotionButton
               className={`tugas1-tab-btn ${activePage === 'kasus' ? 'active' : ''}`}
               onClick={() => setActivePage('kasus')}
             >
               <Smartphone size={20} />
               <span>Rancang Ulang <span className="tab-sub-text">(4 Kasus Mockup)</span></span>
-            </button>
+            </MotionButton>
           </div>
 
           <div className="tugas1-quick-hint">
             {activePage === 'analisis' ? (
-              <button className="quick-switch-link" onClick={() => setActivePage('kasus')}>
+              <MotionButton className="quick-switch-link" onClick={() => setActivePage('kasus')}>
                 <span>Langsung ke 4 Kasus Redesain</span>
                 <ArrowRight size={16} />
-              </button>
+              </MotionButton>
             ) : (
-              <button className="quick-switch-link" onClick={() => setActivePage('analisis')}>
+              <MotionButton className="quick-switch-link" onClick={() => setActivePage('analisis')}>
                 <span>Lihat Ringkasan Teori & Analisis</span>
                 <ArrowRight size={16} />
-              </button>
+              </MotionButton>
             )}
           </div>
         </nav>
@@ -120,12 +119,15 @@ export default function App() {
 
       {/* 3. Main Workspace Canvas */}
       <main className="imk-main-canvas">
+        <MotionSwitch motionKey={`${activeAssignmentId}-${activePage}`} className="portal-page-motion">
         {activeAssignmentId === 'tugas-1' ? (
           activePage === 'analisis' ? (
             <PageAnalisisSummary onGoToCases={() => setActivePage('kasus')} />
           ) : (
             <PageRancangUlangCases onGoToAnalysis={() => setActivePage('analisis')} />
           )
+        ) : activeAssignmentId === 'tugas-2' ? (
+          <PageUX />
         ) : (
           <UpcomingAssignment 
             assignment={currentAssignment} 
@@ -135,6 +137,7 @@ export default function App() {
             }} 
           />
         )}
+        </MotionSwitch>
       </main>
     </div>
   );

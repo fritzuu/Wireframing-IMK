@@ -1,3 +1,4 @@
+import { MotionButton } from '../motion/PortalMotion';
 import React, { useState } from 'react';
 import { 
   ChevronLeft, 
@@ -85,7 +86,7 @@ export default function SlideRedesignCase({ caseIndex = 0, onSelectCase }) {
       <div className="case-selector-bar">
         <div className="case-pills-row">
           {gulfItems.map((item, idx) => (
-            <button
+            <MotionButton
               key={item.id}
               className={`case-pill-btn ${caseIndex === idx ? 'active' : ''}`}
               onClick={() => {
@@ -95,7 +96,7 @@ export default function SlideRedesignCase({ caseIndex = 0, onSelectCase }) {
             >
               <span className="case-pill-num">Kasus {idx + 1}</span>
               <span className="case-pill-title">{item.title}</span>
-            </button>
+            </MotionButton>
           ))}
         </div>
 

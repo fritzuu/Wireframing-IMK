@@ -1,3 +1,4 @@
+import { MotionButton } from '../motion/PortalMotion';
 import React, { useState } from 'react';
 import { 
   FileText, 
@@ -27,14 +28,14 @@ export default function SlideDokumenPaper() {
           </p>
         </div>
 
-        <button 
+        <MotionButton
           className="btn-toggle-transcript"
           onClick={() => setIsFullTranscriptOpen(!isFullTranscriptOpen)}
         >
           <FileText size={16} />
           <span>{isFullTranscriptOpen ? 'Tutup Transkrip Lengkap' : 'Buka Transkrip PDF Lengkap'}</span>
           <ChevronDown size={14} className={`chevron-icon ${isFullTranscriptOpen ? 'open' : ''}`} />
-        </button>
+        </MotionButton>
       </div>
 
       {/* Bento Grid Deliverable Overview */}

@@ -1,3 +1,4 @@
+import { MotionButton } from '../motion/PortalMotion';
 import React, { useState } from 'react';
 import { ArrowLeft, CheckCircle2, Info, X, ShieldCheck } from 'lucide-react';
 
@@ -21,9 +22,9 @@ export default function ScreenTokenFixed({ activeBadgeId, onBadgeClick }) {
     <div className="pln-app-screen token-screen fixed-screen">
       {/* Top Header */}
       <div className="screen-nav-header">
-        <button className="nav-back-btn">
+        <MotionButton className="nav-back-btn">
           <ArrowLeft size={20} />
-        </button>
+        </MotionButton>
         <span className="nav-title">Token & Pembayaran</span>
         <div style={{ width: 24 }}></div>
       </div>
@@ -61,7 +62,7 @@ export default function ScreenTokenFixed({ activeBadgeId, onBadgeClick }) {
               <span>520511772413</span>
               <X size={15} className="clear-icon" />
             </div>
-            <button className="btn-periksa active">Terverifikasi</button>
+            <MotionButton className="btn-periksa active">Terverifikasi</MotionButton>
           </div>
         </div>
 
@@ -115,7 +116,7 @@ export default function ScreenTokenFixed({ activeBadgeId, onBadgeClick }) {
         {/* Grid of Nominal Buttons */}
         <div className="nominal-grid-container">
           {nominalOptions.map((item) => (
-            <button
+            <MotionButton
               key={item.value}
               className={`nominal-btn-enhanced ${selectedNominal === item.value ? 'selected' : ''}`}
               onClick={() => setSelectedNominal(item.value)}
@@ -125,16 +126,16 @@ export default function ScreenTokenFixed({ activeBadgeId, onBadgeClick }) {
               {item.value === 'Rp500.000' && (
                 <span className="scenario-tag">Skenario Tugas</span>
               )}
-            </button>
+            </MotionButton>
           ))}
         </div>
       </div>
 
       {/* Bottom Fixed Action */}
       <div className="token-bottom-bar">
-        <button className="btn-selanjutnya">
+        <MotionButton className="btn-selanjutnya">
           Lanjutkan Pembayaran ({selectedNominal})
-        </button>
+        </MotionButton>
       </div>
     </div>
   );
