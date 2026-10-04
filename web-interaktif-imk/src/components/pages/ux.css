@@ -52,3 +52,66 @@
   .ux-problem { font-size: 1.15rem; }
   .ux-table { min-width: 580px; }
 }
+
+/* The same report data becomes readable cards on narrow screens. */
+.ux-table-cards, .ux-nav-label-short, .ux-day-label-short { display: none; }
+.ux-meta-group { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.ux-workspace, .ux-body, .ux-day-motion, .ux-workspace .free-section,
+.ux-workspace .dgti-item, .ux-workspace .free-editorial-column { min-width: 0; }
+.ux-workspace .free-section-title { align-items: flex-start; }
+.ux-workspace .sec-num { flex-shrink: 0; }
+.ux-workspace p, .ux-workspace li, .ux-workspace h1, .ux-workspace h3,
+.ux-workspace td, .ux-workspace dd { overflow-wrap: anywhere; }
+.ux-table-card { border-top: 2px solid var(--pln-teal-border); padding: 16px; background: var(--surface-card); border-radius: 0 0 10px 10px; }
+.ux-table-card h4 { margin: 4px 0 16px; font-size: 1.05rem; line-height: 1.45; }
+.ux-table-card dl { display: flex; flex-direction: column; gap: 14px; }
+.ux-table-card dt { color: var(--pln-teal-deep); font-size: .8rem; font-weight: 750; margin-bottom: 4px; }
+.ux-table-card dd { margin: 0; line-height: 1.6; }
+.ux-source-file { overflow-wrap: anywhere; }
+@media (max-width: 1024px) {
+  .ux-workspace .free-showcase-canvas { grid-template-columns: minmax(0, 1fr); }
+  .ux-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ux-screen-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 768px) {
+  .ux-body, .ux-day-motion { gap: 28px; }
+  .ux-nav { margin-bottom: 22px; }
+  .ux-nav .tugas1-nav-tabs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+  .ux-nav .tugas1-tab-btn { min-height: 48px; padding: 10px 8px; font-size: .9rem; }
+  .ux-nav-label-full, .ux-day-label-full { display: none; }
+  .ux-nav-label-short, .ux-day-label-short { display: inline; }
+  .ux-body .free-hero-header { margin-bottom: 0; gap: 16px; padding-bottom: 22px; }
+  .ux-body .free-hero-title { font-size: clamp(1.45rem, 6vw, 2rem); }
+  .ux-body .free-hero-sub { font-size: .95rem; line-height: 1.6; }
+  .ux-body .free-stat-ribbon { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .ux-body .stat-value { font-size: 1rem; }
+  .ux-day-track { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; overflow: visible; padding: 6px 0; }
+  .ux-day-track .timeline-step-btn { min-width: 0; min-height: 62px; gap: 8px; padding: 6px 0; }
+  .ux-day-track .step-circle { width: 32px; height: 32px; }
+  .ux-day-track .step-title { font-size: .7rem; }
+  .ux-summary { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .ux-summary ul { font-size: .95rem; line-height: 1.65; }
+  .ux-workspace .free-section-title h3 { font-size: 1.2rem; line-height: 1.4; }
+  .ux-source-note { line-height: 1.65; padding: 8px 12px; }
+  .ux-table-wrap { display: none; }
+  .ux-table-cards { display: grid; gap: 16px; }
+  .ux-profile { padding: 16px; }
+  .ux-profile p, .ux-list-block li { font-size: .95rem; line-height: 1.65; }
+  .ux-workspace .free-case-switcher { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); overflow: visible; gap: 4px; }
+  .ux-workspace .free-case-tab { min-height: 44px; padding: 8px 4px; justify-content: center; gap: 4px; }
+  .ux-workspace .free-case-tab .tab-num { display: none; }
+  .ux-workspace .free-back-btn, .ux-download, .ux-workspace .free-nav-arrow { min-height: 44px; }
+  .ux-workspace .free-controls-bar { flex-wrap: wrap; gap: 16px; }
+  .ux-workspace .free-mockups-stage { flex-direction: column; gap: 28px; }
+  .ux-workspace .free-phone-wrapper { max-width: 320px; }
+  .ux-screen-image { max-width: 100%; }
+  .ux-workspace .free-bottom-cta { text-align: left; gap: 12px; }
+  .ux-download { align-self: flex-start; }
+  .ux-next-day { align-self: stretch; }
+}
+@media (max-width: 480px) {
+  .ux-screen-gallery { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .ux-screen-card img { max-width: 230px; }
+  .ux-screen-card { gap: 14px; }
+  .ux-workspace .free-phone-label { flex-wrap: wrap; justify-content: center; font-size: .7rem; letter-spacing: .02em; }
+}

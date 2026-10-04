@@ -1,0 +1,32 @@
+/* Keep shared portal controls inside tablet and phone viewports. */
+.imk-main-canvas { min-height: 0; }
+.top-header-left, .brand-text-stack, .assignment-selector-container { min-width: 0; }
+@media (max-width: 1100px) {
+  .imk-top-header { height: auto; min-height: 66px; flex-wrap: wrap; gap: 12px; padding: 12px 20px; }
+  .top-header-left { flex-wrap: wrap; flex: 1 1 100%; }
+  .top-header-right { min-width: 0; }
+  .team-pill-badge { max-width: 100%; }
+}
+@media (max-width: 768px) {
+  .imk-top-header { padding: 12px 14px; gap: 8px; }
+  .top-header-left { flex-direction: column; align-items: stretch; gap: 12px; width: 100%; }
+  .portal-brand-block { gap: 10px; }
+  .portal-brand-block > svg, .team-pill-badge > svg { flex-shrink: 0; }
+  .brand-meta { font-size: .6rem; letter-spacing: .025em; }
+  .brand-title { font-size: .94rem; }
+  .assignment-selector-container { position: relative; width: 100%; }
+  .assignment-selector-trigger { width: 100%; min-height: 44px; padding: 8px 10px; text-align: left; }
+  .asg-pill-number { flex-shrink: 0; white-space: nowrap; }
+  .asg-pill-name { display: block; flex: 1; min-width: 0; font-size: .85rem; overflow-wrap: anywhere; }
+  .chevron-icon { flex-shrink: 0; }
+  .assignment-dropdown-popover { position: absolute; top: calc(100% + 8px); left: 0; right: 0; width: 100%; max-width: none; max-height: min(60dvh, 420px); overflow-y: auto; }
+  .asg-dropdown-item { min-height: 60px; }
+  .asg-item-row { flex-wrap: wrap; gap: 6px; }
+  .team-pill-badge { padding: 5px 9px; font-size: .73rem; line-height: 1.5; border-radius: 8px; }
+  .imk-main-canvas { padding: 16px 14px max(32px, env(safe-area-inset-bottom)); }
+}
+@media (max-width: 360px) {
+  .brand-title { font-size: .88rem; }
+  .brand-meta { font-size: .55rem; }
+  .imk-main-canvas { padding-left: 10px; padding-right: 10px; }
+}

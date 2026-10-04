@@ -15,10 +15,10 @@ export const projectMeta = {
     {
       id: "tugas-2",
       number: "Tugas 2",
-      title: "UX Design — Token Jelas",
+      title: "UX Design PLN Mobile",
       status: "completed",
-      badge: "Laporan Day 1–5",
-      summary: "Observasi screenshot, persona, ide SCAMPER, empat wireframe before–after, serta evaluasi berbasis skenario sesuai laporan Day 1–5."
+      badge: "Laporan Day 1 sampai 5",
+      summary: "Observasi screenshot, persona, ide SCAMPER, empat wireframe sebelum dan sesudah, serta evaluasi berbasis skenario sesuai laporan Day 1 sampai 5."
     },
     {
       id: "tugas-3",

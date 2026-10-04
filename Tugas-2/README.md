@@ -1,4 +1,4 @@
-# Tugas 2 — UX Design PLN Mobile
+# Tugas 2: UX Design PLN Mobile
 
 Konsep: **Token Jelas: Biaya dan Status dalam Satu Alur**.
 
@@ -6,7 +6,7 @@ Sumber: laporan `A_3_tugasUXdesain_1.pdf` sampai `A_3_tugasUXdesain_5.pdf` dan p
 
 Konten mengikuti laporan; keterangan peserta evaluasi Day 5 diperbarui sesuai klarifikasi pengguna bahwa H S, H A, dan A B P adalah pengguna nyata. Angka evaluasi tetap mengikuti laporan. Tidak ada klaim pembayaran berhasil, kode aplikasi yang diserahkan dalam laporan, atau iterasi yang sudah selesai.
 
-## Day 1 — Empathize
+## Day 1: Empathize
 
 **Fokus / tujuan**
 
@@ -21,19 +21,19 @@ Konten mengikuti laporan; keterangan peserta evaluasi Day 5 diperbarui sesuai kl
 **Hasil**
 
 - K1: rincian biaya; K2: status dan batas waktu; K3: jalur dari riwayat kosong; K4: pesan kontekstual dan pemulihan.
-- K1–K2 menjadi fokus; K3 mendukung alur transaksi; K4 menjadi peluang lanjutan.
+- K1 dan K2 menjadi fokus; K3 mendukung alur transaksi; K4 menjadi peluang lanjutan.
 
 **Deliverable**
 
 - Empathy map.
-- Empat catatan wawancara skenario N1–N4.
-- Daftar kebutuhan K1–K4 dan pemetaan 13 screenshot S01–S13.
+- Empat catatan wawancara skenario N1 sampai N4.
+- Daftar kebutuhan K1 sampai K4 dan pemetaan 13 screenshot S01 sampai S13.
 
 **Batas informasi:** Catatan wawancara dan profil dikembangkan dalam skenario dari screenshot. Dugaan kebutuhan belum divalidasi melalui wawancara pengguna nyata.
 
-[Laporan Day 1](../web-interaktif-imk/public/ux/laporan/A_3_tugasUXdesain_1.pdf) — bagian 1.1–1.4 & Lampiran Kode Sumber Screenshot.
+[Laporan Day 1](../web-interaktif-imk/public/ux/laporan/A_3_tugasUXdesain_1.pdf): bagian 1.1 sampai 1.4 & Lampiran Kode Sumber Screenshot.
 
-## Day 2 — Define
+## Day 2: Define
 
 **Fokus / tujuan**
 
@@ -58,9 +58,9 @@ Konten mengikuti laporan; keterangan peserta evaluasi Day 5 diperbarui sesuai kl
 
 **Batas informasi:** Persona masih hipotesis desain. Tambah daya dikeluarkan karena tidak ada screenshot alurnya; kualitas penanganan gangguan, penyebab riwayat kosong, dan validitas pesanan lama tidak disimpulkan.
 
-[Laporan Day 2](../web-interaktif-imk/public/ux/laporan/A_3_tugasUXdesain_2.pdf) — bagian 2.1–2.4.
+[Laporan Day 2](../web-interaktif-imk/public/ux/laporan/A_3_tugasUXdesain_2.pdf): bagian 2.1 sampai 2.4.
 
-## Day 3 — Ideate
+## Day 3: Ideate
 
 **Fokus / tujuan**
 
@@ -69,12 +69,12 @@ Konten mengikuti laporan; keterangan peserta evaluasi Day 5 diperbarui sesuai kl
 **Pekerjaan**
 
 - Menggunakan tujuh langkah SCAMPER untuk menghasilkan lima ide utama.
-- Menilai kebutuhan pengguna, kelayakan penerapan, dan nilai layanan (D/F/V) pada skala 1–5.
+- Menilai kebutuhan pengguna, kelayakan penerapan, dan nilai layanan (D/F/V) pada skala 1 sampai 5.
 - Menggabungkan ide 1 dan 2, lalu menyusun storyboard visual.
 
 **Hasil**
 
-- Konsep terpilih: “Token Jelas: Biaya dan Status dalam Satu Alur”.
+- Konsep terpilih: "Token Jelas: Biaya dan Status dalam Satu Alur".
 - Ringkasan biaya pada pemilihan token diteruskan ke tinjauan, detail pembayaran, dan status pesanan dengan waktu serta tindakan.
 
 **Deliverable**
@@ -85,13 +85,13 @@ Konten mengikuti laporan; keterangan peserta evaluasi Day 5 diperbarui sesuai kl
 
 **Batas informasi:** Skor D/F/V adalah pertimbangan desain, bukan survei. Nomor VA, identitas, dan status memakai data demo; kedaluwarsa tidak diklaim terjadi pada pesanan asli.
 
-[Laporan Day 3](../web-interaktif-imk/public/ux/laporan/A_3_tugasUXdesain_3.pdf) — bagian 3.1–3.4.
+[Laporan Day 3](../web-interaktif-imk/public/ux/laporan/A_3_tugasUXdesain_3.pdf): bagian 3.1 sampai 3.4.
 
-## Day 4 — Prototype
+## Day 4: Prototype
 
 **Fokus / tujuan**
 
-- Memperagakan konsep Token Jelas melalui wireframe sebelum–sesudah dan dua skenario penggunaan.
+- Memperagakan konsep Token Jelas melalui wireframe sebelum dan sesudah dan dua skenario penggunaan.
 
 **Pekerjaan**
 
@@ -106,15 +106,15 @@ Konten mengikuti laporan; keterangan peserta evaluasi Day 5 diperbarui sesuai kl
 
 **Deliverable**
 
-- Empat pasangan wireframe before–after: S06/T1, S01/A1, S10/A2, S11/R1.
+- Empat pasangan wireframe sebelum dan sesudah: S06/T1, S01/A1, S10/A2, S11/R1.
 - Dua narasi skenario penggunaan, masing-masing lima langkah.
 - Aturan interaksi dan kesiapan evaluasi.
 
 **Batas informasi:** Hanya BCA VA didemonstrasikan. Identitas, VA, pesanan, dan status adalah data contoh; angka bukan klaim tarif terkini. K4 belum dirancang penuh; tambah daya dan penanganan gangguan di luar cakupan.
 
-[Laporan Day 4](../web-interaktif-imk/public/ux/laporan/A_3_tugasUXdesain_4.pdf) — bagian 4.1–4.7.
+[Laporan Day 4](../web-interaktif-imk/public/ux/laporan/A_3_tugasUXdesain_4.pdf): bagian 4.1 sampai 4.7.
 
-## Day 5 — Test & Reflect
+## Day 5: Test & Reflect
 
 **Fokus / tujuan**
 
@@ -139,12 +139,12 @@ Konten mengikuti laporan; keterangan peserta evaluasi Day 5 diperbarui sesuai kl
 
 **Batas informasi:** Peserta evaluasi adalah pengguna nyata: H S, H A, dan A B P. Rencana iterasi memuat usulan perbaikan, belum menjadi bukti revisi atau pengujian ulang yang sudah selesai.
 
-[Laporan Day 5](../web-interaktif-imk/public/ux/laporan/A_3_tugasUXdesain_5.pdf) — bagian 5.1–5.6 & Refleksi Individu / Rencana Iterasi.
+[Laporan Day 5](../web-interaktif-imk/public/ux/laporan/A_3_tugasUXdesain_5.pdf): bagian 5.1 sampai 5.6 & Refleksi Individu / Rencana Iterasi.
 
 ## Dokumen dan tampilan
 
-- **Ringkasan Laporan Proses UX Day 1–5:** ringkasan empat bagian untuk setiap hari, lalu detail dari laporan.
-- **Rancang Ulang:** empat pasangan before–after dari Day 4: S06/T1, S01/A1, S10/A2, S11/R1.
+- **Ringkasan Laporan Proses UX Day 1 sampai 5:** ringkasan empat bagian untuk setiap hari, lalu detail dari laporan.
+- **Rancang Ulang:** empat pasangan sebelum dan sesudah dari Day 4: S06/T1, S01/A1, S10/A2, S11/R1.
 - [Presentasi final lima slide (PDF)](../web-interaktif-imk/public/ux/laporan/A_3_tugasUXdesain_5_Presentasi.pdf).
 
 Konten website berada di `web-interaktif-imk/src/data/uxReportData.js`; tampilan memakai `PageUX.jsx` dan gaya portal yang sudah ada. Buka Tugas 2 dari pemilih tugas di header.

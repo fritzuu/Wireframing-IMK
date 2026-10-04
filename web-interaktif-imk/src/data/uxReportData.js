@@ -1,47 +1,47 @@
-// Ringkasan bersumber dari A_3_tugasUXdesain_1–5.pdf dalam ZIP revisi terakhir.
+// Ringkasan bersumber dari A_3_tugasUXdesain_1 sampai 5.pdf dalam ZIP revisi terakhir.
 // Keterangan peserta Day 5 mengikuti klarifikasi pengguna bahwa pesertanya nyata.
 const report = day => `/ux/laporan/A_3_tugasUXdesain_${day}.pdf`;
 
 export const uxDays = [
   {
     day: 1, stage: 'Empathize', title: 'Memahami kebutuhan pengguna',
-    source: report(1), sourceSections: '1.1–1.4 & Lampiran Kode Sumber Screenshot',
+    source: report(1), sourceSections: '1.1 sampai 1.4 & Lampiran Kode Sumber Screenshot',
     focus: ['Menelaah kebutuhan, potensi frustrasi, dan motivasi pengguna dari 13 screenshot PLN Mobile.'],
     work: ['Mengobservasi biaya, status pesanan, pesan gagal, dan riwayat kosong.', 'Menyusun empat catatan wawancara dalam skenario: H S, H A, A B P, dan R P.', 'Memetakan ucapan, pikiran, tindakan, dan perasaan dalam empathy map.'],
-    results: ['K1: rincian biaya; K2: status dan batas waktu; K3: jalur dari riwayat kosong; K4: pesan kontekstual dan pemulihan.', 'K1–K2 menjadi fokus; K3 mendukung alur transaksi; K4 menjadi peluang lanjutan.'],
-    deliverables: ['Empathy map.', 'Empat catatan wawancara skenario N1–N4.', 'Daftar kebutuhan K1–K4 dan pemetaan 13 screenshot S01–S13.'],
+    results: ['K1: rincian biaya; K2: status dan batas waktu; K3: jalur dari riwayat kosong; K4: pesan kontekstual dan pemulihan.', 'K1 dan K2 menjadi fokus; K3 mendukung alur transaksi; K4 menjadi peluang lanjutan.'],
+    deliverables: ['Empathy map.', 'Empat catatan wawancara skenario N1 sampai N4.', 'Daftar kebutuhan K1 sampai K4 dan pemetaan 13 screenshot S01 sampai S13.'],
     limitation: 'Catatan wawancara dan profil dikembangkan dalam skenario dari screenshot. Dugaan kebutuhan belum divalidasi melalui wawancara pengguna nyata.',
     sections: [
       {title: 'Observasi antarmuka', type: 'table', headers: ['Bukti', 'Terlihat pada layar', 'Peluang desain'], rows: [
-        ['S06 → S03 → S02', 'Admin dan total sudah terlihat sebelum lanjut pembayaran.', 'Majukan ringkasan ke tahap memilih nominal dan metode.'],
+        ['S06 , S03 , S02', 'Admin dan total sudah terlihat sebelum lanjut pembayaran.', 'Majukan ringkasan ke tahap memilih nominal dan metode.'],
         ['S01 / S10', 'Pesanan lama masih berstatus menunggu pembayaran.', 'Perjelas batas waktu dan status tiap kartu; validasi masa berlaku.'],
         ['S04 / S05', 'Pesan gagal atau kosong belum memberi panduan yang jelas.', 'Gunakan pesan sesuai konteks dan tindakan pemulihan.'],
         ['S07 / S11', 'Riwayat kosong tidak menampilkan tindakan pada area screenshot.', 'Jelaskan cakupan riwayat dan arahkan ke tindakan relevan.'],
       ]},
       {title: 'Catatan wawancara dalam skenario', type: 'profiles', items: [
-        {name: 'N1 / H S', context: 'Pengguna prabayar yang memeriksa biaya sebelum membayar.', source: 'S06, S03, S02', question: 'Ketika memilih token Rp5.000, informasi apa yang perlu terlihat?', answer: 'Saya ingin melihat nominal, biaya admin dan total saat memilih, supaya tidak perlu bolak-balik.', action: 'Memeriksa pilihan nominal lalu membandingkan ringkasan pembayaran.', pain: 'Biaya sudah ada sebelum pembayaran, tetapi belum terlihat pada layar nominal yang ditangkap.', need: 'K1 — nominal, metode, admin, dan total saat memilih token.'},
-        {name: 'N2 / H A', context: 'Pengguna yang memiliki pesanan belum dibayar.', source: 'S01, S10, S02', question: 'Apa yang ingin diketahui ketika pesanan lama masih berstatus menunggu?', answer: 'Saya ingin tahu pesanan mana yang masih berlaku dan kapan harus membuat pesanan baru.', action: 'Membandingkan tanggal pesanan dengan batas waktu pembayaran.', pain: 'Batas waktu per kartu tidak terlihat pada daftar aktif yang ditangkap.', need: 'K2 — status, batas waktu, dan tindakan pada setiap pesanan.'},
-        {name: 'N3 / A B P', context: 'Pengguna yang mencari transaksi sebelumnya.', source: 'S11, S13', question: 'Apa yang perlu dijelaskan ketika riwayat kosong?', answer: 'Saya ingin tahu riwayat ini berisi transaksi apa dan harus ke mana untuk melihat pesanan yang belum dibayar.', action: 'Berpindah antara beranda, pesanan aktif, dan riwayat.', pain: 'Riwayat kosong belum memberi jalur lanjut pada area yang terlihat.', need: 'K3 — penjelasan cakupan, tautan ke pesanan aktif atau bantuan.'},
-        {name: 'N4 / R P', context: 'Pengguna yang belum akrab dengan kategori pembayaran.', source: 'S04, S05, S07', question: 'Apa yang membantu saat kode tidak ditemukan atau halaman kosong?', answer: 'Jelaskan kode yang harus dipakai, lalu beri pilihan untuk memperbaiki atau meminta bantuan.', action: 'Membaca pesan, memeriksa tab aktif, dan memperbaiki masukan.', pain: 'Non Taglis tidak memberi panduan pemulihan; teks Tagihan Listrik menyebut token.', need: 'K4 — pesan sesuai konteks dan langkah pemulihan.'},
+        {name: 'N1 / H S', context: 'Pengguna prabayar yang memeriksa biaya sebelum membayar.', source: 'S06, S03, S02', question: 'Ketika memilih token Rp5.000, informasi apa yang perlu terlihat?', answer: 'Saya ingin melihat nominal, biaya admin dan total saat memilih, supaya tidak perlu bolak-balik.', action: 'Memeriksa pilihan nominal lalu membandingkan ringkasan pembayaran.', pain: 'Biaya sudah ada sebelum pembayaran, tetapi belum terlihat pada layar nominal yang ditangkap.', need: 'K1: nominal, metode, admin, dan total saat memilih token.'},
+        {name: 'N2 / H A', context: 'Pengguna yang memiliki pesanan belum dibayar.', source: 'S01, S10, S02', question: 'Apa yang ingin diketahui ketika pesanan lama masih berstatus menunggu?', answer: 'Saya ingin tahu pesanan mana yang masih berlaku dan kapan harus membuat pesanan baru.', action: 'Membandingkan tanggal pesanan dengan batas waktu pembayaran.', pain: 'Batas waktu per kartu tidak terlihat pada daftar aktif yang ditangkap.', need: 'K2: status, batas waktu, dan tindakan pada setiap pesanan.'},
+        {name: 'N3 / A B P', context: 'Pengguna yang mencari transaksi sebelumnya.', source: 'S11, S13', question: 'Apa yang perlu dijelaskan ketika riwayat kosong?', answer: 'Saya ingin tahu riwayat ini berisi transaksi apa dan harus ke mana untuk melihat pesanan yang belum dibayar.', action: 'Berpindah antara beranda, pesanan aktif, dan riwayat.', pain: 'Riwayat kosong belum memberi jalur lanjut pada area yang terlihat.', need: 'K3: penjelasan cakupan, tautan ke pesanan aktif atau bantuan.'},
+        {name: 'N4 / R P', context: 'Pengguna yang belum akrab dengan kategori pembayaran.', source: 'S04, S05, S07', question: 'Apa yang membantu saat kode tidak ditemukan atau halaman kosong?', answer: 'Jelaskan kode yang harus dipakai, lalu beri pilihan untuk memperbaiki atau meminta bantuan.', action: 'Membaca pesan, memeriksa tab aktif, dan memperbaiki masukan.', pain: 'Non Taglis tidak memberi panduan pemulihan; teks Tagihan Listrik menyebut token.', need: 'K4: pesan sesuai konteks dan langkah pemulihan.'},
       ], note: 'Motivasi yang dicatat: menyelesaikan tugas dengan informasi yang dapat dipahami. Semua tanggapan di atas merupakan jawaban skenario.'},
       {title: 'Empathy map', type: 'image', src: '/ux/empathy.png', alt: 'Empathy map dari laporan Day 1: Says, Thinks, Does, dan Feels.'},
     ],
   },
   {
     day: 2, stage: 'Define', title: 'Merumuskan masalah biaya dan status',
-    source: report(2), sourceSections: '2.1–2.4',
+    source: report(2), sourceSections: '2.1 sampai 2.4',
     focus: ['Merumuskan masalah dari sudut pengguna berdasarkan observasi dan kebutuhan Day 1.'],
     work: ['Mensintesis tema kepastian biaya, kepastian status, serta pemulihan dan orientasi.', 'Menyusun persona primer H S dan persona sekunder H A.', 'Menetapkan problem statement, pertanyaan desain, dan kriteria evaluasi.'],
     results: ['Fokus pada pembelian token dan pemantauan pesanan karena bukti layarnya saling berkaitan.', 'Masalah utama: rincian biaya perlu dimajukan; status, batas waktu, dan tindakan perlu terlihat bersama.'],
     deliverables: ['User Persona Sheet untuk H S dan H A.', 'Problem statement berpusat pada pengguna.', 'Pertanyaan desain dan target pengamatan biaya, status, tindakan, serta jalur riwayat.'],
     limitation: 'Persona masih hipotesis desain. Tambah daya dikeluarkan karena tidak ada screenshot alurnya; kualitas penanganan gangguan, penyebab riwayat kosong, dan validitas pesanan lama tidak disimpulkan.',
     sections: [
-      {title: 'User Persona Sheet', type: 'table', headers: ['Aspek', 'Primer — H S / N1', 'Sekunder — H A / N2'], rows: [
+      {title: 'User Persona Sheet', type: 'table', headers: ['Aspek', 'Primer: H S / N1', 'Sekunder: H A / N2'], rows: [
         ['Konteks', 'Pengguna prabayar yang teliti membandingkan pembayaran.', 'Pengguna yang menunda pembayaran lalu kembali ke daftar pesanan.'],
         ['Tujuan', 'Memahami nominal, admin, metode, dan total sebelum membuat pesanan.', 'Mengetahui pesanan yang dapat dibayar dan tindakan saat masa berlaku habis.'],
         ['Potensi frustrasi', 'Harus mencari rincian pada tahap berikutnya.', 'Pesanan lama dan baru terlihat dengan status serupa.'],
         ['Perilaku skenario', 'Memeriksa nominal dan ringkasan sebelum lanjut.', 'Membaca status, waktu, dan tindakan per pesanan.'],
-        ['Kebutuhan', 'K1 — ringkasan biaya di layar nominal.', 'K2 — batas waktu, status, dan tombol sesuai keadaan.'],
+        ['Kebutuhan', 'K1: ringkasan biaya di layar nominal.', 'K2: batas waktu, status, dan tombol sesuai keadaan.'],
         ['Dasar', 'S06, S03, S02; skenario N1.', 'S01, S10, S02; skenario N2.'],
       ]},
       {title: 'Problem statement', type: 'statement', text: 'Pengguna PLN Mobile yang membeli token dan memantau pesanan membutuhkan ringkasan biaya yang mudah dibandingkan sejak pemilihan nominal serta status dan batas waktu yang jelas pada tiap pesanan, agar dapat memutuskan pembayaran dan tindakan berikutnya tanpa menafsirkan ulang informasi di beberapa layar.'},
@@ -55,14 +55,14 @@ export const uxDays = [
   },
   {
     day: 3, stage: 'Ideate', title: 'Memilih konsep Token Jelas',
-    source: report(3), sourceSections: '3.1–3.4',
+    source: report(3), sourceSections: '3.1 sampai 3.4',
     focus: ['Mengembangkan solusi untuk biaya lebih awal serta status pesanan yang dapat ditindaklanjuti.'],
-    work: ['Menggunakan tujuh langkah SCAMPER untuk menghasilkan lima ide utama.', 'Menilai kebutuhan pengguna, kelayakan penerapan, dan nilai layanan (D/F/V) pada skala 1–5.', 'Menggabungkan ide 1 dan 2, lalu menyusun storyboard visual.'],
-    results: ['Konsep terpilih: “Token Jelas: Biaya dan Status dalam Satu Alur”.', 'Ringkasan biaya pada pemilihan token diteruskan ke tinjauan, detail pembayaran, dan status pesanan dengan waktu serta tindakan.'],
+    work: ['Menggunakan tujuh langkah SCAMPER untuk menghasilkan lima ide utama.', 'Menilai kebutuhan pengguna, kelayakan penerapan, dan nilai layanan (D/F/V) pada skala 1 sampai 5.', 'Menggabungkan ide 1 dan 2, lalu menyusun storyboard visual.'],
+    results: ['Konsep terpilih: "Token Jelas: Biaya dan Status dalam Satu Alur".', 'Ringkasan biaya pada pemilihan token diteruskan ke tinjauan, detail pembayaran, dan status pesanan dengan waktu serta tindakan.'],
     deliverables: ['Lima ide utama beserta skor dan alasan D/F/V.', 'Satu konsep gabungan ide 1 + 2.', 'Storyboard visual alur pengguna.'],
     limitation: 'Skor D/F/V adalah pertimbangan desain, bukan survei. Nomor VA, identitas, dan status memakai data demo; kedaluwarsa tidak diklaim terjadi pada pesanan asli.',
     sections: [
-      {title: 'SCAMPER — cara mengembangkan ide', type: 'table', headers: ['Langkah', 'Penerapan'], rows: [
+      {title: 'SCAMPER: cara mengembangkan ide', type: 'table', headers: ['Langkah', 'Penerapan'], rows: [
         ['Substitute / ganti', 'Ganti status umum dengan status, waktu, dan tindakan.'],
         ['Combine / gabungkan', 'Gabungkan nominal, metode, dan rincian biaya.'],
         ['Adapt / adaptasi', 'Adaptasi pola ringkasan pesanan dan status yang dapat diperiksa.'],
@@ -73,7 +73,7 @@ export const uxDays = [
       ]},
       {title: 'Lima ide dan penilaian D/F/V', type: 'table', headers: ['Ide', 'Solusi', 'D / F / V', 'Dasar dan pertimbangan'], rows: [
         ['1. Ringkasan biaya pada nominal', 'Gabungkan nominal, metode, admin, dan total sebelum pesanan dibuat.', '5 / 4 / 4', 'K1; S06/S03/S02. Memerlukan admin per metode yang akurat.'],
-        ['2. Status dengan tindakan', 'Tampilkan batas waktu, status, alasan, dan tombol sesuai keadaan.', '5 / 3 / 4', 'K2–K3; S01/S10/S02/S11. Memerlukan sinkronisasi status dan masa berlaku.'],
+        ['2. Status dengan tindakan', 'Tampilkan batas waktu, status, alasan, dan tombol sesuai keadaan.', '5 / 3 / 4', 'K2 sampai K3; S01/S10/S02/S11. Memerlukan sinkronisasi status dan masa berlaku.'],
         ['3. Pemilih kategori pembayaran', 'Jelaskan Token, Tagihan, dan Non Taglis sebelum memasukkan kode.', '4 / 4 / 3', 'K4; S04/S05. Dampak pengurangan salah konteks perlu diuji.'],
         ['4. Pesan gagal dengan pemulihan', 'Sertakan contoh kode, perbaikan masukan, dan bantuan.', '4 / 4 / 3', 'K4; S04/S05. Jenis kesalahan perlu divalidasi.'],
         ['5. Hierarki beranda', 'Pertahankan Beli Token dan dekatkan pesanan aktif ke kartu pelanggan.', '3 / 4 / 3', 'S13/S12/S08. Dampak promosi pada pencarian belum terbukti.'],
@@ -86,23 +86,23 @@ export const uxDays = [
   },
   {
     day: 4, stage: 'Prototype', title: 'Merancang empat perubahan antarmuka',
-    source: report(4), sourceSections: '4.1–4.7',
-    focus: ['Memperagakan konsep Token Jelas melalui wireframe sebelum–sesudah dan dua skenario penggunaan.'],
+    source: report(4), sourceSections: '4.1 sampai 4.7',
+    focus: ['Memperagakan konsep Token Jelas melalui wireframe sebelum dan sesudah dan dua skenario penggunaan.'],
     work: ['Membandingkan empat layar: pemilihan token, pesanan aktif, kedaluwarsa, dan riwayat kosong.', 'Menyusun skenario pembelian token serta status dan pemulihan, masing-masing lima langkah.', 'Menetapkan aturan pilihan nominal, penyimpanan pilihan, status demo, dan jalur bantuan.'],
     results: ['T1: biaya lebih awal; A1: waktu pada kartu; A2: tindakan kedaluwarsa; R1: jalan lanjut dari riwayat kosong.', 'Contoh biaya konsisten: token Rp5.000 + admin BCA VA Rp1.750 = total Rp6.750.'],
-    deliverables: ['Empat pasangan wireframe before–after: S06/T1, S01/A1, S10/A2, S11/R1.', 'Dua narasi skenario penggunaan, masing-masing lima langkah.', 'Aturan interaksi dan kesiapan evaluasi.'],
+    deliverables: ['Empat pasangan wireframe sebelum dan sesudah: S06/T1, S01/A1, S10/A2, S11/R1.', 'Dua narasi skenario penggunaan, masing-masing lima langkah.', 'Aturan interaksi dan kesiapan evaluasi.'],
     limitation: 'Hanya BCA VA didemonstrasikan. Identitas, VA, pesanan, dan status adalah data contoh; angka bukan klaim tarif terkini. K4 belum dirancang penuh; tambah daya dan penanganan gangguan di luar cakupan.',
     sections: [
-      {title: 'Wireframe — empat perubahan utama', type: 'screens'},
-      {title: 'Skenario A — pembelian token', type: 'steps', items: [
+      {title: 'Wireframe: empat perubahan utama', type: 'screens'},
+      {title: 'Skenario A: pembelian token', type: 'steps', items: [
         'H0: buka Beli Token.',
         'T1: pilih Rp5.000; BCA VA sudah dipilih. Sebut nominal, admin, dan total sebelum Selanjutnya.',
         'T2: periksa identitas dan total; Lanjutkan Pembayaran membuat pesanan demo.',
         'T3: temukan VA dummy dan batas pembayaran; buka Pesanan Aktif.',
         'A1: temukan pesanan yang sama dan jelaskan status serta tombol yang sesuai.',
       ]},
-      {title: 'Skenario B — status pesanan dan pemulihan', type: 'steps', items: [
-        'H0 → R1: buka Riwayat & Bantuan dengan data demo kosong.',
+      {title: 'Skenario B: status pesanan dan pemulihan', type: 'steps', items: [
+        'H0 , R1: buka Riwayat & Bantuan dengan data demo kosong.',
         'Baca penjelasan, lalu pilih Lihat Pesanan Aktif.',
         'A1: temukan status dan batas waktu pesanan.',
         'Gunakan kontrol demo Kedaluwarsa untuk membuka A2; jelaskan mengapa tombol bayar tidak tersedia.',
@@ -122,7 +122,7 @@ export const uxDays = [
   },
   {
     day: 5, stage: 'Test & Reflect', title: 'Mengevaluasi dan menentukan iterasi',
-    source: report(5), sourceSections: '5.1–5.6 & Refleksi Individu / Rencana Iterasi',
+    source: report(5), sourceSections: '5.1 sampai 5.6 & Refleksi Individu / Rencana Iterasi',
     focus: ['Menilai pemahaman total biaya, batas pembayaran, dan tindakan sesuai status pesanan.'],
     work: ['Menyusun walkthrough dua tugas untuk H S, H A, dan A B P dari Day 1.', 'Merangkum hasil, durasi, skor kemudahan, tanggapan, dan implikasi desain dalam skenario.', 'Menulis refleksi individu dan tiga prioritas iterasi.'],
     results: ['Dalam skenario: 6/6 tugas selesai; 5/6 mandiri. H S perlu bantuan pada tugas B terkait kedaluwarsa.', 'Rata-rata waktu A: 71,7 detik; B: 81,7 detik. Skor kemudahan: 4,0/5.'],
@@ -130,27 +130,27 @@ export const uxDays = [
     limitation: 'Peserta evaluasi adalah pengguna nyata: H S, H A, dan A B P. Rencana iterasi memuat usulan perbaikan, belum menjadi bukti revisi atau pengujian ulang yang sudah selesai.',
     sections: [
       {title: 'Tugas dan kriteria keberhasilan', type: 'table', headers: ['Tugas', 'Kriteria'], rows: [
-        ['A — pilih token Rp5.000 melalui BCA VA dan buat pesanan.', 'Sebut Rp5.000 + Rp1.750 = Rp6.750 sebelum lanjut; temukan batas pembayaran dan pesanan aktif.'],
-        ['B — telusuri riwayat kosong dan pesanan kedaluwarsa.', 'Temukan Pesanan Aktif, bedakan menunggu dan kedaluwarsa, lalu pilih pesanan baru atau bantuan.'],
+        ['A: pilih token Rp5.000 melalui BCA VA dan buat pesanan.', 'Sebut Rp5.000 + Rp1.750 = Rp6.750 sebelum lanjut; temukan batas pembayaran dan pesanan aktif.'],
+        ['B: telusuri riwayat kosong dan pesanan kedaluwarsa.', 'Temukan Pesanan Aktif, bedakan menunggu dan kedaluwarsa, lalu pilih pesanan baru atau bantuan.'],
       ]},
       {title: 'Hasil walkthrough dalam skenario', type: 'table', headers: ['Karakter', 'Tugas A: hasil / waktu / skor', 'Tugas B: hasil / waktu / skor'], rows: [
         ['H S / N1', 'Mandiri / 75 detik / 4', 'Dengan bantuan / 95 detik / 3'],
         ['H A / N2', 'Mandiri / 55 detik / 5', 'Mandiri / 70 detik / 4'],
         ['A B P / N3', 'Mandiri / 85 detik / 4', 'Mandiri / 80 detik / 4'],
-      ], note: 'Skor 1–5: sangat sulit hingga sangat mudah. Seluruh durasi dan skor ilustratif. Ringkasan: 6/6 selesai; 5/6 mandiri; rata-rata A 71,7 detik, B 81,7 detik, skor 4,0/5.'},
+      ], note: 'Skor 1 sampai 5: sangat sulit hingga sangat mudah. Seluruh durasi dan skor ilustratif. Ringkasan: 6/6 selesai; 5/6 mandiri; rata-rata A 71,7 detik, B 81,7 detik, skor 4,0/5.'},
       {title: 'Tanggapan dan implikasi desain', type: 'table', headers: ['Layar', 'Tanggapan dalam skenario', 'Implikasi'], rows: [
-        ['T1 — biaya', 'H S: “Total Rp6.750 sudah terlihat saat memilih token.”', 'Pertahankan nominal, admin, dan total di bawah sebelum Selanjutnya.'],
-        ['A1 — waktu', 'H A: “Sekarang saya tahu sampai kapan pesanan bisa dibayar.”', 'Pertahankan waktu pada kartu; perbarui status dan waktu bersama.'],
-        ['A2 — kedaluwarsa', 'H S memerlukan penjelasan bahwa pesanan kedaluwarsa harus dibuat ulang.', 'Perjelas alasan dan tindakan Buat Pesanan Baru.'],
-        ['R1 — riwayat', 'A B P: “Saya bisa masuk ke Pesanan Aktif dari sini.”', 'Pertahankan jalur lanjut dan jelaskan cakupan riwayat.'],
+        ['T1: biaya', 'H S: "Total Rp6.750 sudah terlihat saat memilih token."', 'Pertahankan nominal, admin, dan total di bawah sebelum Selanjutnya.'],
+        ['A1: waktu', 'H A: "Sekarang saya tahu sampai kapan pesanan bisa dibayar."', 'Pertahankan waktu pada kartu; perbarui status dan waktu bersama.'],
+        ['A2: kedaluwarsa', 'H S memerlukan penjelasan bahwa pesanan kedaluwarsa harus dibuat ulang.', 'Perjelas alasan dan tindakan Buat Pesanan Baru.'],
+        ['R1: riwayat', 'A B P: "Saya bisa masuk ke Pesanan Aktif dari sini."', 'Pertahankan jalur lanjut dan jelaskan cakupan riwayat.'],
       ]},
       {title: 'Refleksi individu', type: 'list', items: [
         'Masalah desain harus mengikuti bukti: admin dan total sudah terlihat sebelum Lanjutkan Pembayaran; perubahan yang relevan memajukannya ke pemilihan nominal.',
-        'Dalam skenario, kebutuhan K1–K3 terhubung ke T1/A1/A2/R1: biaya lebih mudah dirujuk, pesanan punya waktu, dan halaman kosong punya jalur lanjut.',
+        'Dalam skenario, kebutuhan K1 sampai K3 terhubung ke T1/A1/A2/R1: biaya lebih mudah dirujuk, pesanan punya waktu, dan halaman kosong punya jalur lanjut.',
         'Penjelasan kedaluwarsa perlu alasan dan tindakan; total, status, dan waktu perlu tetap terlihat saat konten digulir.',
       ]},
-      {title: 'Rencana iterasi — urutan prioritas', type: 'table', headers: ['Prioritas', 'Perubahan yang diusulkan', 'Kriteria berikutnya'], rows: [
-        ['1', 'Perjelas A2: “Batas waktu pembayaran telah habis”.', 'Memilih pesanan baru tanpa penjelasan tambahan.'],
+      {title: 'Rencana iterasi: urutan prioritas', type: 'table', headers: ['Prioritas', 'Perubahan yang diusulkan', 'Kriteria berikutnya'], rows: [
+        ['1', 'Perjelas A2: "Batas waktu pembayaran telah habis".', 'Memilih pesanan baru tanpa penjelasan tambahan.'],
         ['2', 'Dekatkan status, waktu, dan tindakan pada A1.', 'Menyebut status dan batas pembayaran dari satu kartu.'],
         ['3', 'Pertahankan total T1 serta penjelasan dan jalur Pesanan Aktif di R1.', 'Memahami total sebelum lanjut dan menemukan jalur Pesanan Aktif.'],
       ]},

@@ -29,7 +29,7 @@ export default function App() {
           <div className="portal-brand-block">
             <GraduationCap size={26} className="text-teal" />
             <div className="brand-text-stack">
-              <span className="brand-meta">PORTAL TUGAS IMK • INFORMATIKA UNS</span>
+              <span className="brand-meta">PORTAL TUGAS IMK, INFORMATIKA UNS</span>
               <span className="brand-title">Interaksi Manusia & Komputer</span>
             </div>
           </div>
@@ -75,7 +75,7 @@ export default function App() {
         <div className="top-header-right">
           <div className="team-pill-badge">
             <Users size={17} />
-            <span>Kelompok 3: Zendinan • Faris • Revan</span>
+            <span>Kelompok 3: Zendinan, Faris, dan Revan</span>
           </div>
         </div>
       </MotionReveal>
