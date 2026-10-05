@@ -2,7 +2,7 @@ import React, { useEffect, useReducer, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, BatteryFull, Clock, Copy, Eye, EyeOff, Home, RotateCcw, Wifi, X } from 'lucide-react';
 import { MotionButton, MotionSwitch } from '../motion/PortalMotion';
 import {
-  canVisit, createPrototypeState, demoAdmin, demoDeadline, demoPaymentNumber, demoTimeLeft,
+  canVisit, createPrototypeState, demoDeadline, demoTimeLeft, getPaymentMethod, paymentMethods,
   prototypeFlows, prototypeReducer, prototypeScreens, rectangleStyle, rupiah, sketchLinks, tokenAmounts,
 } from '../../data/uxPrototype';
 import './ux-prototype.css';
@@ -21,11 +21,13 @@ export default function UXPrototype({ initialScreen = 'H0', onClose }) {
   useEffect(() => { if (dialog.current && !dialog.current.open) dialog.current.showModal(); }, []);
 
   const copyNumber = async () => {
+    const paymentNumber = state.order?.paymentNumber;
+    if (!paymentNumber) return;
     try {
-      await navigator.clipboard.writeText(demoPaymentNumber);
+      await navigator.clipboard.writeText(paymentNumber);
       setNotice('Nomor pembayaran demo sudah disalin.');
     } catch {
-      setNotice(`Nomor pembayaran demo: ${demoPaymentNumber}`);
+      setNotice(`Nomor pembayaran demo: ${paymentNumber}`);
     }
   };
 
@@ -57,6 +59,7 @@ export default function UXPrototype({ initialScreen = 'H0', onClose }) {
             {!state.order && <p>Buat pesanan atau pilih alur B untuk mencoba status.</p>}
           </div>
           <p className="ux-small">Empat sketsa asli dipakai untuk simulasi. Beranda, tinjauan, detail pembayaran, dan bantuan melengkapi alur pada laporan Hari 4. Nomor dan waktu adalah contoh tetap.</p>
+          <p className="ux-small">Laporan memakai BCA. Pilihan bank lainnya ditambahkan untuk demo interaktif. Semua biaya admin Rp1.750 dan nomor pembayaran di sini adalah contoh simulasi.</p>
         </details>
         <MotionButton className="ux-prototype-back" onClick={() => act({ type: 'BACK' })} disabled={state.screen === 'H0' && !state.history.length}><ArrowLeft size={16} />Kembali satu layar</MotionButton>
         {notice && <p className="ux-prototype-notice" role="status">{notice}</p>}
@@ -74,17 +77,22 @@ export default function UXPrototype({ initialScreen = 'H0', onClose }) {
 }
 
 export function PrototypeScreen({ state, onAction, onCopy }) {
+  const method = getPaymentMethod(state.paymentMethod);
   if (sketchLinks[state.screen] && !(state.screen === 'A1' && !state.order)) {
     return <div className="ux-prototype-sketch">
       <img className="ux-prototype-base" src={`/ux/${state.screen}.png`} alt={`Sketsa ${prototypeScreens[state.screen].title}`} draggable="false" />
       {sketchLinks[state.screen].map(link => <MotionButton className="ux-prototype-hotspot" style={rectangleStyle(link.rect)} key={link.label} aria-label={link.label} title={link.label} onClick={() => onAction(link.action)} />)}
       {state.screen === 'T1' && <>
         {tokenAmounts.map((amount, index) => <MotionButton className={`ux-prototype-amount ${state.amount === amount ? 'selected' : ''}`} key={amount} aria-pressed={state.amount === amount} style={rectangleStyle([index % 2 ? 370 : 44, 713 + Math.floor(index / 2) * 128, 296, 104])} onClick={() => onAction({ type: 'SELECT_AMOUNT', amount })}>{rupiah(amount)}</MotionButton>)}
-        <div className="ux-prototype-cost-footer" style={rectangleStyle([0, 1240, 710, 360])}>
-          <span className="ux-prototype-method">Metode pembayaran. BCA Virtual Account</span>
-          <div><span>Total Biaya</span><strong>{state.amount ? rupiah(state.amount + demoAdmin) : 'Pilih nominal'}</strong></div>
-          <small>{state.amount ? `Token ${rupiah(state.amount)} + admin ${rupiah(demoAdmin)}` : 'Pilih nominal token untuk melihat rincian biaya.'}</small>
-          <MotionButton className="ux-prototype-primary" disabled={!state.amount} onClick={() => onAction(go('T2'))}>Selanjutnya<ArrowRight size={16} /></MotionButton>
+        <div className="ux-prototype-cost-footer" style={rectangleStyle([0, 1210, 710, 390])}>
+          <label className="ux-prototype-method"><span>Metode pembayaran</span>
+            <select value={state.paymentMethod} onChange={event => onAction({ type: 'SELECT_PAYMENT_METHOD', paymentMethod: event.target.value })}>
+              {paymentMethods.map(option => <option key={option.id} value={option.id}>{option.label}</option>)}
+            </select>
+          </label>
+          <div><span>Total Biaya</span><strong>{state.amount && method ? rupiah(state.amount + method.admin) : 'Pilih nominal'}</strong></div>
+          <small>{state.amount && method ? `Token ${rupiah(state.amount)} + admin ${rupiah(method.admin)}` : 'Pilih nominal token untuk melihat rincian biaya.'}</small>
+          <MotionButton className="ux-prototype-primary" disabled={!canVisit(state, 'T2')} onClick={() => onAction(go('T2'))}>Selanjutnya<ArrowRight size={16} /></MotionButton>
         </div>
       </>}
       {['A1', 'A2'].includes(state.screen) && <>
@@ -112,15 +120,15 @@ export function PrototypeScreen({ state, onAction, onCopy }) {
       {state.screen === 'T2' && <>
         <h3>Periksa sebelum membuat pesanan</h3>
         <div className="ux-prototype-app-card"><span>PELANGGAN DEMO</span><strong>H S</strong><p>12345678901</p></div>
-        <CostSummary amount={state.amount} />
+        <CostSummary amount={state.amount} paymentMethod={state.paymentMethod} admin={method.admin} total={state.amount + method.admin} />
         <MotionButton className="ux-prototype-secondary" onClick={() => onAction(go('T1'))}>Ubah Pilihan</MotionButton>
         <p className="ux-prototype-app-note">Lanjutkan Pembayaran membuat pesanan demo. Pembayaran belum berhasil.</p>
       </>}
       {state.screen === 'T3' && <>
         <div className={`ux-prototype-app-banner ${state.order.status === 'expired' ? 'expired' : ''}`}><strong>{statusNames[state.order.status]}</strong><p>{state.order.status === 'waiting' ? 'Pesanan dibuat. Pembayaran belum berhasil.' : state.order.status === 'expired' ? 'Batas pembayaran telah habis. Buat pesanan baru.' : 'Pembayaran demo sedang diperiksa.'}</p></div>
         <div className="ux-prototype-app-card"><span>BATAS PEMBAYARAN DEMO</span><strong>{demoDeadline}</strong><p>{state.order.status === 'expired' ? 'Masa berlaku habis' : `Sisa waktu demo ${demoTimeLeft}`}</p></div>
-        <div className="ux-prototype-app-card"><span>BCA VIRTUAL ACCOUNT. DEMO</span><strong className="ux-prototype-payment-number">{demoPaymentNumber}</strong><MotionButton className="ux-prototype-secondary" onClick={onCopy}><Copy size={16} />Salin nomor demo</MotionButton></div>
-        <CostSummary amount={state.order.amount} />
+        <div className="ux-prototype-app-card"><span>{getPaymentMethod(state.order.paymentMethod).label.toUpperCase()}. DEMO</span><strong className="ux-prototype-payment-number">{state.order.paymentNumber}</strong><MotionButton className="ux-prototype-secondary" onClick={onCopy}><Copy size={16} />Salin nomor demo</MotionButton></div>
+        <CostSummary amount={state.order.amount} paymentMethod={state.order.paymentMethod} admin={state.order.admin} total={state.order.total} />
         <p className="ux-prototype-app-note">Pesanan DEMO-TOKEN-{String(state.order.number).padStart(3, '0')}. Tidak ada transaksi nyata.</p>
       </>}
       {state.screen === 'A1' && !state.order && <div className="ux-prototype-app-card"><h3>Belum ada pesanan aktif</h3><p>Pilih nominal token dan buat pesanan untuk mencoba alur.</p><MotionButton className="ux-prototype-primary" onClick={() => onAction(go('T1'))}>Beli Token</MotionButton></div>}
@@ -139,6 +147,6 @@ export function PrototypeScreen({ state, onAction, onCopy }) {
   </div>;
 }
 
-function CostSummary({ amount }) {
-  return <dl className="ux-prototype-cost-summary"><div><dt>Nominal token</dt><dd>{rupiah(amount)}</dd></div><div><dt>Metode</dt><dd>BCA Virtual Account</dd></div><div><dt>Biaya admin</dt><dd>{rupiah(demoAdmin)}</dd></div><div><dt>Total Biaya</dt><dd>{rupiah(amount + demoAdmin)}</dd></div></dl>;
+function CostSummary({ amount, paymentMethod, admin, total }) {
+  return <dl className="ux-prototype-cost-summary"><div><dt>Nominal token</dt><dd>{rupiah(amount)}</dd></div><div><dt>Metode</dt><dd>{getPaymentMethod(paymentMethod).label}</dd></div><div><dt>Biaya admin</dt><dd>{rupiah(admin)}</dd></div><div><dt>Total Biaya</dt><dd>{rupiah(total)}</dd></div></dl>;
 }

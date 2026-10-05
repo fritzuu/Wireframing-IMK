@@ -1,15 +1,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { canVisit, createPrototypeState, demoAdmin, prototypeReducer, prototypeScreens, sketchLinks } from './uxPrototype.js';
+import { canVisit, createPrototypeState, demoAdmin, demoPaymentNumber, paymentMethods, prototypeReducer, prototypeScreens, sketchLinks } from './uxPrototype.js';
 
 const apply = (state, ...actions) => actions.reduce(prototypeReducer, state);
 const navigate = screen => ({ type: 'NAVIGATE', screen });
 const select = amount => ({ type: 'SELECT_AMOUNT', amount });
+const choosePayment = paymentMethod => ({ type: 'SELECT_PAYMENT_METHOD', paymentMethod });
 
 test('purchase flow keeps the selected amount and total through payment details and active orders', () => {
   const state = apply(createPrototypeState(), navigate('T1'), select(10000), navigate('T2'), { type: 'CREATE_ORDER' }, navigate('A1'));
   assert.equal(state.screen, 'A1');
-  assert.deepEqual(state.order, { amount: 10000, total: 11750, status: 'waiting', number: 1 });
+  assert.deepEqual(state.order, { amount: 10000, total: 11750, admin: 1750, paymentMethod: 'bca', paymentNumber: demoPaymentNumber, status: 'waiting', number: 1 });
   assert.equal(demoAdmin, 1750);
 });
 
@@ -73,4 +74,45 @@ test('all original sketch click areas stay inside their images and lead to suppo
     else assert.equal(link.action.type, 'NEW_ORDER');
   }
   assert.ok(sketchLinks.A2.every(link => link.action.screen !== 'T3'));
+});
+
+test('each payment choice is preserved through review and captured on the order', () => {
+  for (const method of paymentMethods) {
+    const review = apply(createPrototypeState('T1'), select(25000), choosePayment(method.id), navigate('T2'));
+    const back = apply(review, { type: 'BACK' });
+    assert.equal(back.screen, 'T1');
+    assert.equal(back.amount, 25000);
+    assert.equal(back.paymentMethod, method.id);
+    assert.equal(apply(review, navigate('T1')).paymentMethod, method.id);
+    const details = apply(back, navigate('T2'), { type: 'CREATE_ORDER' });
+    assert.equal(details.screen, 'T3');
+    assert.equal(details.order.paymentMethod, method.id);
+    assert.equal(details.order.paymentNumber, method.paymentNumber);
+    assert.equal(details.order.admin, method.admin);
+    assert.equal(details.order.total, 25000 + method.admin);
+    assert.equal(apply(details, navigate('A1')).order.paymentMethod, method.id);
+  }
+});
+
+test('unsupported payment methods cannot be selected or used to create an order', () => {
+  const state = apply(createPrototypeState('T1'), select(5000), choosePayment('unknown'));
+  assert.equal(state.paymentMethod, 'bca');
+  const invalid = { ...state, paymentMethod: 'unknown' };
+  assert.equal(canVisit(invalid, 'T2'), false);
+  assert.equal(apply(invalid, navigate('T2')).screen, 'T1');
+  assert.equal(apply({ ...invalid, screen: 'T2' }, { type: 'CREATE_ORDER' }).order, null);
+});
+
+test('changing the next payment method leaves the existing order details intact', () => {
+  const state = apply(createPrototypeState('T1'), select(10000), choosePayment('bni'), navigate('T2'), { type: 'CREATE_ORDER' },
+    { type: 'NEW_ORDER' }, select(50000), choosePayment('mandiri'), navigate('T3'));
+  assert.equal(state.paymentMethod, 'mandiri');
+  assert.equal(state.order.paymentMethod, 'bni');
+  assert.equal(state.order.paymentNumber, paymentMethods.find(method => method.id === 'bni').paymentNumber);
+  assert.equal(state.order.total, 11750);
+  const fresh = apply(state, navigate('T2'), { type: 'CREATE_ORDER' });
+  assert.equal(fresh.order.paymentMethod, 'mandiri');
+  assert.equal(fresh.order.total, 51750);
+  assert.equal(fresh.order.number, 2);
+  assert.equal(apply(fresh, { type: 'RESET' }).paymentMethod, 'bca');
 });

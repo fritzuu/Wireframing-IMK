@@ -1,13 +1,20 @@
 export const tokenAmounts = [5000, 10000, 15000, 20000, 25000, 50000, 100000, 150000];
 export const demoAdmin = 1750;
 export const demoPaymentNumber = '880012345678901';
+export const paymentMethods = [
+  { id: 'bca', label: 'BCA Virtual Account', admin: demoAdmin, paymentNumber: demoPaymentNumber },
+  { id: 'bni', label: 'BNI Virtual Account', admin: demoAdmin, paymentNumber: '880022345678901' },
+  { id: 'bri', label: 'BRI Virtual Account', admin: demoAdmin, paymentNumber: '880032345678901' },
+  { id: 'mandiri', label: 'Mandiri Virtual Account', admin: demoAdmin, paymentNumber: '880042345678901' },
+];
+export const getPaymentMethod = id => paymentMethods.find(method => method.id === id);
 export const demoDeadline = '30 September 2026, 23:40 WIB';
 export const demoTimeLeft = '03:16:40';
 export const rupiah = value => `Rp${new Intl.NumberFormat('id-ID').format(value)}`;
 
 export const prototypeScreens = {
   H0: { title: 'Beranda', hint: 'Pilih Beli Token atau buka Riwayat dan Bantuan.' },
-  T1: { title: 'Pemilihan token', hint: 'Pilih nominal. Perhatikan admin dan total sebelum menekan Selanjutnya.' },
+  T1: { title: 'Pemilihan token', hint: 'Pilih nominal dan metode pembayaran. Periksa admin dan total sebelum menekan Selanjutnya.' },
   T2: { title: 'Tinjauan pesanan', hint: 'Periksa biaya. Ubah Pilihan akan mengembalikan pilihan yang sama.' },
   T3: { title: 'Detail pembayaran', hint: 'Pesanan sudah dibuat. Pembayaran belum berhasil. Temukan nomor pembayaran dan batas waktu.' },
   A1: { title: 'Pesanan aktif', hint: 'Periksa status dan batas waktu. Bayar Sekarang membuka detail pembayaran demo.' },
@@ -21,9 +28,11 @@ export const prototypeFlows = {
   B: ['H0', 'R1', 'A1', 'A2', 'T1'],
 };
 
-const demoOrder = (amount, status = 'waiting', number = 1) => ({
-  amount, total: amount + demoAdmin, status, number,
-});
+const demoOrder = (amount, status = 'waiting', number = 1, paymentMethod = 'bca') => {
+  const method = getPaymentMethod(paymentMethod);
+  return { amount, total: amount + method.admin, admin: method.admin, paymentMethod,
+    paymentNumber: method.paymentNumber, status, number };
+};
 
 export function createPrototypeState(screen = 'H0', scenario = ['R1', 'A2'].includes(screen) ? 'B' : 'A') {
   const seeded = ['A1', 'A2', 'T3', 'R1'].includes(screen) || scenario === 'B';
@@ -31,6 +40,7 @@ export function createPrototypeState(screen = 'H0', scenario = ['R1', 'A2'].incl
     screen: prototypeScreens[screen] ? screen : 'H0',
     scenario,
     amount: seeded ? 5000 : null,
+    paymentMethod: 'bca',
     order: seeded ? demoOrder(5000, screen === 'A2' ? 'expired' : 'waiting') : null,
     orderCount: seeded ? 1 : 0,
     history: [],
@@ -39,7 +49,7 @@ export function createPrototypeState(screen = 'H0', scenario = ['R1', 'A2'].incl
 
 export function canVisit(state, screen) {
   if (!prototypeScreens[screen]) return false;
-  if (screen === 'T2') return tokenAmounts.includes(state.amount);
+  if (screen === 'T2') return tokenAmounts.includes(state.amount) && Boolean(getPaymentMethod(state.paymentMethod));
   if (screen === 'T3') return Boolean(state.order);
   if (screen === 'A2') return state.order?.status === 'expired';
   return true;
@@ -66,9 +76,10 @@ export function prototypeReducer(state, action) {
       return { ...state, screen: 'H0', history: [] };
     }
     case 'SELECT_AMOUNT': return tokenAmounts.includes(action.amount) ? { ...state, amount: action.amount } : state;
+    case 'SELECT_PAYMENT_METHOD': return getPaymentMethod(action.paymentMethod) ? { ...state, paymentMethod: action.paymentMethod } : state;
     case 'CREATE_ORDER': {
-      if (state.screen !== 'T2' || !tokenAmounts.includes(state.amount)) return state;
-      const next = { ...state, order: demoOrder(state.amount, 'waiting', state.orderCount + 1), orderCount: state.orderCount + 1 };
+      if (state.screen !== 'T2' || !canVisit(state, 'T2')) return state;
+      const next = { ...state, order: demoOrder(state.amount, 'waiting', state.orderCount + 1, state.paymentMethod), orderCount: state.orderCount + 1 };
       return navigate(next, 'T3');
     }
     case 'SET_STATUS': {
