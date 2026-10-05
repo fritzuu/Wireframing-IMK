@@ -80,7 +80,7 @@
 @media (max-width: 768px) {
   .ux-body, .ux-day-motion { gap: 28px; }
   .ux-nav { margin-bottom: 22px; }
-  .ux-nav .tugas1-nav-tabs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+  .ux-nav .tugas1-nav-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; gap: 8px; }
   .ux-nav .tugas1-tab-btn { min-height: 48px; padding: 10px 8px; font-size: .9rem; }
   .ux-nav-label-full, .ux-day-label-full { display: none; }
   .ux-nav-label-short, .ux-day-label-short { display: inline; }
@@ -113,6 +113,7 @@
   .ux-next-day { align-self: stretch; }
 }
 @media (max-width: 480px) {
+  .ux-nav .tugas1-tab-btn { flex-direction: column; gap: 6px; padding: 10px 4px; }
   .ux-screen-gallery { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .ux-screen-card img { max-width: 230px; }
   .ux-screen-card { gap: 14px; }
@@ -127,3 +128,19 @@
 .ux-code-reference dt { flex-shrink: 0; font: 750 .82rem var(--font-mono); min-width: 36px; }
 .ux-code-reference dd { margin: 0; font-size: .9rem; overflow-wrap: anywhere; }
 @media (max-width: 768px) { .ux-code-reference dl { grid-template-columns: minmax(0, 1fr); } }
+
+.ux-asset-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+.ux-asset-card { min-width: 0; display: flex; flex-direction: column; gap: 16px; border-top: 2px solid var(--seam-border); padding: 16px 12px; }
+.ux-asset-card figure { display: flex; flex-direction: column; gap: 16px; }
+.ux-asset-preview { display: flex; align-items: center; justify-content: center; height: 340px; padding: 16px; border-radius: 12px; background: var(--surface-subtle); }
+.ux-asset-preview img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 8px; }
+.ux-asset-card figcaption { display: flex; flex-direction: column; gap: 8px; }
+.ux-asset-card h2 { font-size: 1.1rem; line-height: 1.4; overflow-wrap: break-word; }
+.ux-asset-card p { font-size: .9rem; line-height: 1.6; color: var(--ink-secondary); }
+.ux-asset-actions { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: auto; }
+.ux-asset-actions a, .ux-asset-case-link { min-height: 44px; }
+.ux-asset-case-link { display: inline-flex; align-items: center; gap: 8px; padding: 0; border: 0; background: transparent; color: var(--pln-teal-deep); font: inherit; font-size: .9rem; font-weight: 750; text-align: left; cursor: pointer; }
+.ux-asset-case-link:hover { text-decoration: underline; }
+.ux-asset-case-link svg { flex-shrink: 0; }
+@media (max-width: 1024px) { .ux-asset-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; } }
+@media (max-width: 480px) { .ux-asset-grid { grid-template-columns: minmax(0, 1fr); } }
