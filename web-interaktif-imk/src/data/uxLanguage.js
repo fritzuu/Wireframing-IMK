@@ -31,9 +31,9 @@ const terms = [
   ['Primer:', 'Pengguna utama:'], ['Sekunder:', 'Pengguna pendukung:'],
   ['walkthrough', 'penelusuran alur penggunaan'], ['D/F/V', 'kebutuhan, kelayakan, dan manfaat'],
   ['BCA VA', 'nomor pembayaran virtual BCA'], ['VA dummy', 'nomor pembayaran contoh'], ['Nomor VA', 'Nomor pembayaran virtual'],
-  ['Substitute / ganti', 'Ganti'], ['Combine / gabungkan', 'Gabungkan'], ['Adapt / adaptasi', 'Adaptasi'],
-  ['Modify / ubah', 'Ubah'], ['Put to another use / manfaatkan ulang', 'Manfaatkan ulang'],
-  ['Eliminate / hilangkan', 'Hilangkan'], ['Rearrange / susun ulang', 'Susun ulang'],
+  ['Substitute / ganti', 'S. Substitute'], ['Combine / gabungkan', 'C. Combine'], ['Adapt / adaptasi', 'A. Adapt'],
+  ['Modify / ubah', 'M. Modify'], ['Put to another use / manfaatkan ulang', 'P. Put to another use'],
+  ['Eliminate / hilangkan', 'E. Eliminate'], ['Rearrange / susun ulang', 'R. Rearrange'],
 ];
 
 export function readableText(value) {
@@ -111,7 +111,7 @@ export const readableDays = uxDays.map(day => {
   }
   if (day.day === 3) {
     copy.work[1] = 'Menilai apakah ide dibutuhkan pengguna, bisa diterapkan, dan bermanfaat bagi layanan pada skala 1 sampai 5.';
-    copy.sections[0].title = 'Tujuh cara mengembangkan ide';
+    copy.sections[0].title = 'SCAMPER. Tujuh cara mengembangkan ide';
     copy.sections[0].note = 'Metode ini disebut SCAMPER. Setiap langkah membantu melihat kemungkinan perubahan pada desain yang sudah ada.';
   }
   if (day.day === 4) {
