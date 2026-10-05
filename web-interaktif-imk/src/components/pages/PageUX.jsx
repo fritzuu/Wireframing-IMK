@@ -54,6 +54,22 @@ export function DayReport({ day, onSelectCase }) {
 }
 
 function ReportSection({ section, onSelectCase }) {
+  if (section.type === 'personas') {
+    return <>
+      <p className="ux-language-note">{section.intro}</p>
+      <div className="ux-profiles">
+        {section.items.map((persona, index) => <MotionCard className="ux-profile ux-persona" key={persona.name} delay={index * 0.05}>
+          <div className="ux-persona-heading">
+            <span className="ux-persona-initials" aria-hidden="true">{persona.name}</span>
+            <div><span className="dgti-code">{persona.role}</span><h4>{persona.name}</h4></div>
+          </div>
+          <p>{persona.context}</p>
+          <dl>{persona.details.map(detail => <div key={detail.label}><dt>{detail.label}</dt><dd>{detail.text}</dd></div>)}</dl>
+        </MotionCard>)}
+      </div>
+      <p className="ux-small">{section.note}</p>
+    </>;
+  }
   if (section.type === 'table') {
     return <>
       <div className="ux-table-wrap">
@@ -75,7 +91,7 @@ function ReportSection({ section, onSelectCase }) {
     </>;
   }
   if (section.type === 'profiles') {
-    return <><div className="ux-profiles">{section.items.map(profile => <MotionCard className="ux-profile" key={profile.name}><div className="ux-meta-group"><span className="dgti-code">{profile.name}</span><span className="ux-small">{profile.source}</span></div><h4>{profile.context}</h4><p><b>Pertanyaan:</b> {profile.question}</p><blockquote>{profile.answer}</blockquote><p><b>Perilaku:</b> {profile.action}</p><p><b>Potensi frustrasi:</b> {profile.pain}</p><p><b>Kebutuhan:</b> {profile.need}</p></MotionCard>)}</div><p className="ux-small">{section.note}</p></>;
+    return <><div className="ux-profiles">{section.items.map(profile => <MotionCard className="ux-profile" key={profile.name}><div className="ux-meta-group"><span className="dgti-code">{profile.name}</span><span className="ux-small">{profile.source}</span></div><h4>{profile.context}</h4><p><b>Pertanyaan:</b> {profile.question}</p><blockquote>{profile.answer}</blockquote><p><b>Perilaku:</b> {profile.action}</p><p><b>Hambatan (Pain):</b> {profile.pain}</p><p><b>Kebutuhan:</b> {profile.need}</p></MotionCard>)}</div><p className="ux-small">{section.note}</p></>;
   }
   if (section.type === 'image') {
     return <figure className="ux-report-figure"><img src={section.src} alt={section.alt} /><figcaption className="ux-small">Gambar dari laporan. <MotionLink className="ux-download" href={section.src} target="_blank" rel="noreferrer">Buka gambar penuh</MotionLink></figcaption></figure>;

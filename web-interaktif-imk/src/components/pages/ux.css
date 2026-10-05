@@ -19,6 +19,12 @@
 .ux-profile h4 { font-size: 1.2rem; }
 .ux-profile p { font-size: .98rem; }
 .ux-profile blockquote { border-left: 2px solid var(--pln-teal-border); padding-left: 14px; font-weight: 650; }
+.ux-persona-heading { display: flex; align-items: center; gap: 14px; }
+.ux-persona-initials { display: grid; place-items: center; flex-shrink: 0; width: 58px; height: 58px; border-radius: 50%; background: var(--pln-teal-surface); color: var(--pln-teal-deep); font-weight: 800; }
+.ux-persona-heading h4 { margin-top: 4px; }
+.ux-persona dl { display: flex; flex-direction: column; gap: 16px; margin: 0; }
+.ux-persona dt { color: var(--pln-teal-deep); font-size: .84rem; font-weight: 750; margin-bottom: 4px; }
+.ux-persona dd { margin: 0; font-size: .98rem; line-height: 1.6; }
 .ux-small { font-size: .84rem; line-height: 1.6; color: var(--ink-tertiary); }
 .ux-report-figure img { width: 100%; max-width: 1100px; height: auto; }
 .ux-report-figure figcaption { margin-top: 8px; }

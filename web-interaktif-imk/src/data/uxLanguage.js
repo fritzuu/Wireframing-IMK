@@ -17,6 +17,7 @@ export const reportCodes = {
 
 const codePattern = /\b(?:K[1-4]|N[1-4]|S(?:0[1-9]|1[0-3])|H0|T[1-3]|A[1-2]|R1|B1)\b/g;
 const terms = [
+  ['Catatan wawancara dalam skenario', 'Catatan wawancara'],
   ['H S / N1', 'Peserta H S'], ['H A / N2', 'Peserta H A'], ['A B P / N3', 'Peserta A B P'],
   ['N1 / H S', 'Peserta H S'], ['N2 / H A', 'Peserta H A'], ['N3 / A B P', 'Peserta A B P'], ['N4 / R P', 'Peserta R P'],
   ['User Persona Sheet', 'Lembar gambaran pengguna'], ['Problem statement', 'Rumusan masalah'],
@@ -67,6 +68,37 @@ export const readableDays = uxDays.map(day => {
   if (day.day === 1) {
     copy.results = ['Empat kebutuhan ditemukan: memahami biaya, membaca status dan batas waktu, menemukan transaksi, serta memperbaiki kesalahan.', 'Biaya dan status menjadi fokus utama. Jalur pencarian transaksi mendukung alur, sedangkan pemulihan kesalahan menjadi peluang lanjutan.'];
     copy.deliverables = ['Peta empati yang merangkum ucapan, pikiran, tindakan, dan perasaan pengguna.', 'Empat catatan wawancara skenario dengan peserta berinisial H S, H A, A B P, dan R P.', 'Daftar kebutuhan pengguna dan pemetaan 13 screenshot.'];
+    copy.sections.splice(1, 0, {
+      title: 'Hambatan dan manfaat yang diharapkan',
+      type: 'table',
+      headers: ['Pengguna', 'Hambatan (Pain)', 'Manfaat yang diharapkan (Gain)'],
+      rows: [
+        ['H S. Memilih token', 'Rincian biaya belum terlihat saat memilih nominal.', 'Mengetahui nominal, admin, dan total sejak memilih token tanpa bolak-balik.'],
+        ['H A. Memantau pesanan', 'Batas waktu belum terlihat pada setiap kartu pesanan aktif.', 'Mengetahui pesanan yang masih bisa dibayar dan kapan perlu membuat pesanan baru.'],
+        ['A B P. Mencari transaksi', 'Riwayat kosong belum memberi jalan lanjut.', 'Memahami isi riwayat dan menemukan pesanan yang belum dibayar.'],
+        ['R P. Memperbaiki masukan', 'Pesan gagal belum memberi panduan pemulihan dan istilah pembayaran membingungkan.', 'Mengetahui kode yang sesuai dan langkah memperbaiki masukan atau meminta bantuan.'],
+      ],
+      note: 'Pain diringkas dari potensi frustrasi. Gain diringkas dari jawaban dan kebutuhan pada laporan Hari 1 bagian 1.2. Keduanya berasal dari skenario desain; manfaat ini masih diharapkan, belum menjadi hasil yang terbukti.',
+    });
+  }
+  if (day.day === 2) {
+    const personas = copy.sections.find(section => section.title === 'Lembar gambaran pengguna');
+    personas.type = 'personas';
+    personas.title = 'Persona pengguna';
+    personas.intro = 'Persona adalah gambaran pengguna yang menjadi acuan perancangan. Dua profil ini berfokus pada biaya dan status pesanan.';
+    personas.items = personas.headers.slice(1).map((header, index) => {
+      const [role, name] = header.split(': Peserta ');
+      return {
+        name,
+        role,
+        context: personas.rows[0][index + 1],
+        details: personas.rows.slice(1).map(([label, ...values]) => ({
+          label: label === 'Potensi frustrasi' ? 'Hambatan (Pain)' : label === 'Perilaku skenario' ? 'Perilaku' : label,
+          text: values[index],
+        })),
+      };
+    });
+    personas.note = 'Sumber profil: laporan Hari 2 bagian 2.2. Persona masih merupakan hipotesis desain berdasarkan observasi dan kebutuhan Hari 1.';
   }
   if (day.day === 3) {
     copy.work[1] = 'Menilai apakah ide dibutuhkan pengguna, bisa diterapkan, dan bermanfaat bagi layanan pada skala 1 sampai 5.';
