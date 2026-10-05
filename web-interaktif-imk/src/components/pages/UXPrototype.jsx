@@ -81,9 +81,9 @@ export function PrototypeScreen({ state, onAction, onCopy }) {
   if (sketchLinks[state.screen] && !(state.screen === 'A1' && !state.order)) {
     return <div className="ux-prototype-sketch">
       <img className="ux-prototype-base" src={`/ux/${state.screen}.png`} alt={`Sketsa ${prototypeScreens[state.screen].title}`} draggable="false" />
-      {sketchLinks[state.screen].map(link => <MotionButton className="ux-prototype-hotspot" style={rectangleStyle(link.rect)} key={link.label} aria-label={link.label} title={link.label} onClick={() => onAction(link.action)} />)}
+      {sketchLinks[state.screen].map(link => <MotionButton stationary className={`ux-prototype-hotspot ux-prototype-hotspot-${link.shape || 'tab'}`} style={rectangleStyle(link.rect)} key={link.label} aria-label={link.label} title={link.label} onClick={() => onAction(link.action)} />)}
       {state.screen === 'T1' && <>
-        {tokenAmounts.map((amount, index) => <MotionButton className={`ux-prototype-amount ${state.amount === amount ? 'selected' : ''}`} key={amount} aria-pressed={state.amount === amount} style={rectangleStyle([index % 2 ? 370 : 44, 713 + Math.floor(index / 2) * 128, 296, 104])} onClick={() => onAction({ type: 'SELECT_AMOUNT', amount })}>{rupiah(amount)}</MotionButton>)}
+        {tokenAmounts.map((amount, index) => <MotionButton stationary className={`ux-prototype-amount ${state.amount === amount ? 'selected' : ''}`} key={amount} aria-pressed={state.amount === amount} style={rectangleStyle([index % 2 ? 370 : 44, 713 + Math.floor(index / 2) * 128, 296, 104])} onClick={() => onAction({ type: 'SELECT_AMOUNT', amount })}>{rupiah(amount)}</MotionButton>)}
         <div className="ux-prototype-cost-footer" style={rectangleStyle([0, 1210, 710, 390])}>
           <label className="ux-prototype-method"><span>Metode pembayaran</span>
             <select value={state.paymentMethod} onChange={event => onAction({ type: 'SELECT_PAYMENT_METHOD', paymentMethod: event.target.value })}>
@@ -101,7 +101,7 @@ export function PrototypeScreen({ state, onAction, onCopy }) {
         {state.screen === 'A1' && state.order.status === 'checking' && <>
           <div className="ux-prototype-image-status" style={rectangleStyle([56, 742, 598, 84])}>Pembayaran demo sedang diperiksa.<br />Tunggu konfirmasi status.</div>
           <div className="ux-prototype-image-text" style={rectangleStyle([55, 882, 350, 55])}>Sedang Diperiksa</div>
-          <MotionButton className="ux-prototype-primary ux-prototype-image-button" style={rectangleStyle([428, 876, 226, 69])} onClick={() => onAction(go('T3'))}>Lihat Detail</MotionButton>
+          <MotionButton stationary className="ux-prototype-primary ux-prototype-image-button" style={rectangleStyle([428, 876, 226, 69])} onClick={() => onAction(go('T3'))}>Lihat Detail</MotionButton>
         </>}
         {state.screen === 'A2' && <div className="ux-prototype-image-status" style={rectangleStyle([56, 742, 598, 84])}>Masa pembayaran demo telah berakhir<br />Total pembayaran: {rupiah(state.order.total)}</div>}
       </>}

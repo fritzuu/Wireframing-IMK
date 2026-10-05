@@ -99,25 +99,25 @@ export function prototypeReducer(state, action) {
 // Coordinates follow the original 710 × 1600 sketches. They scale with the image.
 export const sketchLinks = {
   T1: [
-    { label: 'Kembali ke beranda', rect: [24, 88, 68, 72], action: { type: 'NAVIGATE', screen: 'H0' } },
+    { label: 'Kembali ke beranda', shape: 'icon', rect: [26, 96, 52, 52], action: { type: 'NAVIGATE', screen: 'H0' } },
   ],
   A1: [
-    { label: 'Buka riwayat', rect: [232, 162, 122, 76], action: { type: 'NAVIGATE', screen: 'R1' } },
-    { label: 'Bayar Sekarang. Buka detail pembayaran demo', rect: [428, 876, 226, 69], action: { type: 'NAVIGATE', screen: 'T3' } },
-    { label: 'Lihat bantuan', rect: [56, 1293, 598, 69], action: { type: 'NAVIGATE', screen: 'B1' } },
-    { label: 'Beranda', rect: [22, 1450, 104, 105], action: { type: 'NAVIGATE', screen: 'H0' } },
+    { label: 'Buka riwayat', shape: 'tab', rect: [226, 168, 112, 58], action: { type: 'NAVIGATE', screen: 'R1' } },
+    { label: 'Bayar Sekarang. Buka detail pembayaran demo', shape: 'pill', rect: [428, 876, 226, 69], action: { type: 'NAVIGATE', screen: 'T3' } },
+    { label: 'Lihat bantuan', shape: 'pill', rect: [56, 1293, 598, 69], action: { type: 'NAVIGATE', screen: 'B1' } },
+    { label: 'Beranda', shape: 'nav', rect: [26, 1452, 90, 88], action: { type: 'NAVIGATE', screen: 'H0' } },
   ],
   A2: [
-    { label: 'Buka riwayat', rect: [232, 162, 122, 76], action: { type: 'NAVIGATE', screen: 'R1' } },
-    { label: 'Buat Pesanan Baru', rect: [392, 876, 266, 69], action: { type: 'NEW_ORDER' } },
-    { label: 'Bantuan Pembayaran', rect: [30, 1195, 650, 69], action: { type: 'NAVIGATE', screen: 'B1' } },
-    { label: 'Beranda', rect: [22, 1450, 104, 105], action: { type: 'NAVIGATE', screen: 'H0' } },
+    { label: 'Buka riwayat', shape: 'tab', rect: [226, 168, 112, 58], action: { type: 'NAVIGATE', screen: 'R1' } },
+    { label: 'Buat Pesanan Baru', shape: 'pill', rect: [392, 876, 266, 69], action: { type: 'NEW_ORDER' } },
+    { label: 'Bantuan Pembayaran', shape: 'pill', rect: [30, 1195, 650, 69], action: { type: 'NAVIGATE', screen: 'B1' } },
+    { label: 'Beranda', shape: 'nav', rect: [26, 1452, 90, 88], action: { type: 'NAVIGATE', screen: 'H0' } },
   ],
   R1: [
-    { label: 'Buka Pesanan Aktif', rect: [30, 162, 185, 76], action: { type: 'NAVIGATE', screen: 'A1' } },
-    { label: 'Lihat Pesanan Aktif', rect: [90, 1088, 530, 79], action: { type: 'NAVIGATE', screen: 'A1' } },
-    { label: 'Bantuan Pembayaran', rect: [90, 1187, 530, 69], action: { type: 'NAVIGATE', screen: 'B1' } },
-    { label: 'Beranda', rect: [22, 1450, 104, 105], action: { type: 'NAVIGATE', screen: 'H0' } },
+    { label: 'Buka Pesanan Aktif', shape: 'tab', rect: [30, 168, 158, 58], action: { type: 'NAVIGATE', screen: 'A1' } },
+    { label: 'Lihat Pesanan Aktif', shape: 'pill', rect: [90, 1088, 530, 79], action: { type: 'NAVIGATE', screen: 'A1' } },
+    { label: 'Bantuan Pembayaran', shape: 'pill', rect: [90, 1187, 530, 69], action: { type: 'NAVIGATE', screen: 'B1' } },
+    { label: 'Beranda', shape: 'nav', rect: [26, 1452, 90, 88], action: { type: 'NAVIGATE', screen: 'H0' } },
   ],
 };
 

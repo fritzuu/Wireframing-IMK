@@ -9,9 +9,9 @@ export function PortalMotionProvider({ children }) {
   return <LazyMotion features={domAnimation} strict><MotionConfig reducedMotion="user" transition={{ duration: 0.28, ease }}>{children}</MotionConfig></LazyMotion>;
 }
 
-export function MotionButton({ children, disabled, indicator, active, className = '', ...props }) {
+export function MotionButton({ children, disabled, indicator, active, stationary = false, className = '', ...props }) {
   const reduced = useReducedMotion();
-  return <m.button {...props} disabled={disabled} className={`portal-motion-button ${className}`} whileHover={disabled || reduced ? undefined : { y: -1, scale: 1.015 }} whileTap={disabled || reduced ? undefined : { scale: 0.97 }} transition={reduced ? { duration: 0 } : spring}>
+  return <m.button {...props} disabled={disabled} className={`portal-motion-button ${className}`} whileHover={disabled || reduced || stationary ? undefined : { y: -1, scale: 1.015 }} whileTap={disabled || reduced || stationary ? undefined : { scale: 0.97 }} transition={reduced ? { duration: 0 } : spring}>
     {indicator && <AnimatePresence initial={false}>{active && <m.span className="portal-active-line" layoutId={reduced ? undefined : indicator} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={reduced ? { duration: 0 } : spring} />}</AnimatePresence>}
     {children}
   </m.button>;

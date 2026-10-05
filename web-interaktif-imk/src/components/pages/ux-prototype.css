@@ -30,10 +30,16 @@
 .ux-prototype-screen-motion, .ux-prototype-sketch { position: absolute; inset: 0; }
 .ux-prototype-base { display: block; width: 100%; height: 100%; }
 .ux-prototype-caption { font-size: .78rem; color: var(--ink-secondary); text-align: center; }
-.ux-prototype .ux-prototype-hotspot, .ux-prototype .ux-prototype-amount, .ux-prototype .ux-prototype-image-button { position: absolute; min-height: 44px; border: 0; border-radius: 10px; background: transparent; padding: 0; }
+.ux-prototype .ux-prototype-hotspot, .ux-prototype .ux-prototype-amount, .ux-prototype .ux-prototype-image-button { position: absolute; min-height: 0; border: 0; border-radius: 2cqw; background: transparent; padding: 0; }
 .ux-prototype-hotspot { z-index: 2; }
-.show-click-areas .ux-prototype-hotspot { outline: 2px dashed rgba(0, 135, 145, .65); outline-offset: -2px; background: rgba(0, 135, 145, .08); }
-.ux-prototype-hotspot:hover { outline: 2px solid var(--pln-teal); outline-offset: -2px; background: rgba(0, 135, 145, .12); }
+.ux-prototype .ux-prototype-hotspot-pill { border-radius: 999px; }
+.ux-prototype .ux-prototype-hotspot-icon { border-radius: 50%; }
+.ux-prototype-hotspot::before { content: ''; position: absolute; inset: 0; border: 1.5px solid rgba(0, 135, 145, .7); border-radius: inherit; background: rgba(0, 135, 145, .06); opacity: 0; pointer-events: none; transition: opacity .18s ease, background-color .18s ease; }
+.show-click-areas .ux-prototype-hotspot::before, .ux-prototype-hotspot:focus-visible::before { opacity: 1; }
+@media (hover: hover) { .ux-prototype-hotspot:hover::before { opacity: 1; background: rgba(0, 135, 145, .12); } }
+/* Keep touch targets generous without stretching the visible sketch outlines. */
+.ux-prototype-hotspot::after, .ux-prototype-amount::after, .ux-prototype-image-button::after { content: ''; position: absolute; left: 50%; top: 50%; width: max(100%, 44px); height: max(100%, 44px); transform: translate(-50%, -50%); }
+.show-click-areas :is(.ux-prototype-amount, .ux-prototype-primary, .ux-prototype-secondary, .ux-prototype-menu, .ux-prototype-method select, .ux-prototype-app-header button, .ux-prototype-bottom-nav button):not(:disabled) { box-shadow: inset 0 0 0 1.5px rgba(0, 135, 145, .65); }
 .ux-prototype .ux-prototype-amount { border: 1px solid #dfe3e9; border-radius: 3cqw; background: white; font-size: 4cqw; font-weight: 800; color: #111317; }
 .ux-prototype .ux-prototype-amount.selected { background: #edf9fa; border-color: #2b8b94; color: #286c75; }
 .ux-prototype-cost-footer { position: absolute; padding: 2cqw 4cqw; background: white; display: flex; flex-direction: column; justify-content: center; gap: 1.5cqw; border-top: 1px solid #dfe3e9; border-radius: 3cqw 3cqw 0 0; overflow-y: auto; }
@@ -48,7 +54,7 @@
 .ux-prototype-image-text { position: absolute; display: flex; align-items: center; background: white; font-size: 3.4cqw; color: #74808b; pointer-events: none; }
 .ux-prototype-image-heading { color: #111317; font-weight: 800; }
 .ux-prototype-image-status { position: absolute; display: flex; flex-direction: column; justify-content: center; padding: 2cqw; border-radius: 2cqw; background: #fff9e6; color: #a27820; font-size: 2.8cqw; line-height: 1.3; pointer-events: none; }
-.ux-prototype .ux-prototype-image-button { width: auto; font-size: 3.3cqw; z-index: 3; }
+.ux-prototype .ux-prototype-image-button { width: auto; min-height: 0; padding: 0; border-radius: 999px; font-size: 3.3cqw; z-index: 3; }
 .ux-prototype-dom-screen { position: absolute; inset: 0; display: flex; flex-direction: column; background: white; }
 .ux-prototype-statusbar { display: flex; justify-content: space-between; padding: 3cqw 5cqw; font-size: 4cqw; }
 .ux-prototype-statusbar span { display: flex; gap: 2cqw; }
@@ -75,9 +81,10 @@
 .ux-prototype-dom-footer { padding: 4cqw; border-top: 1px solid #dfe3e9; }
 .ux-prototype-bottom-nav { display: grid; grid-template-columns: repeat(3, 1fr); padding: 2cqw; border-top: 1px solid #dfe3e9; }
 .ux-prototype-bottom-nav button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 44px; border: 0; background: transparent; color: #286c75; font-size: 3cqw; }
-.ux-prototype-launch { position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px; border: 0; background: transparent; cursor: pointer; color: var(--pln-teal-deep); font: inherit; }
-.ux-prototype-launch > span { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: .9rem; font-weight: 750; }
-.ux-prototype-launch:hover img { outline: 3px solid var(--pln-teal); outline-offset: 4px; }
+.ux-prototype-launch { position: relative; display: block; max-width: 100%; padding: 0; border: 0; border-radius: 24px; background: transparent; cursor: pointer; font: inherit; }
+.ux-prototype-launch img { display: block; }
+.ux-prototype-launch::after { content: ''; position: absolute; inset: 0; border: 1.5px solid var(--pln-teal); border-radius: inherit; opacity: 0; pointer-events: none; transition: opacity .18s ease; }
+@media (hover: hover) { .ux-prototype-launch:hover::after { opacity: 1; } }
 @media (max-width: 768px) {
   .ux-prototype { width: calc(100vw - 16px); height: calc(100dvh - 16px); }
   .ux-prototype-toolbar { padding: 12px; }
