@@ -82,6 +82,11 @@ export const readableDays = uxDays.map(day => {
     });
   }
   if (day.day === 2) {
+    // Age and occupation supplied by the user; report PDFs remain unchanged.
+    const backgrounds = {
+      'H S': { age: '49 tahun', occupation: 'Ibu rumah tangga' },
+      'H A': { age: '50 tahun', occupation: 'Pekerja swasta' },
+    };
     const personas = copy.sections.find(section => section.title === 'Lembar gambaran pengguna');
     personas.type = 'personas';
     personas.title = 'Persona pengguna';
@@ -92,13 +97,17 @@ export const readableDays = uxDays.map(day => {
         name,
         role,
         context: personas.rows[0][index + 1],
-        details: personas.rows.slice(1).map(([label, ...values]) => ({
-          label: label === 'Potensi frustrasi' ? 'Hambatan (Pain)' : label === 'Perilaku skenario' ? 'Perilaku' : label,
-          text: values[index],
-        })),
+        details: [
+          { label: 'Usia', text: backgrounds[name].age },
+          { label: 'Pekerjaan', text: backgrounds[name].occupation },
+          ...personas.rows.slice(1).map(([label, ...values]) => ({
+            label: label === 'Potensi frustrasi' ? 'Hambatan (Pain)' : label === 'Perilaku skenario' ? 'Perilaku' : label,
+            text: values[index],
+          })),
+        ],
       };
     });
-    personas.note = 'Sumber profil: laporan Hari 2 bagian 2.2. Persona masih merupakan hipotesis desain berdasarkan observasi dan kebutuhan Hari 1.';
+    personas.note = 'Sumber profil: laporan Hari 2 bagian 2.2. Usia dan pekerjaan ditambahkan dari informasi penyusun. Kebutuhan desain masih berupa hipotesis berdasarkan observasi dan kebutuhan Hari 1.';
   }
   if (day.day === 3) {
     copy.work[1] = 'Menilai apakah ide dibutuhkan pengguna, bisa diterapkan, dan bermanfaat bagi layanan pada skala 1 sampai 5.';
